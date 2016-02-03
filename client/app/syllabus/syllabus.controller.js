@@ -2,5 +2,8 @@
 
 angular.module('courseplannerApp')
   .controller('SyllabusCtrl', function ($scope) {
-    $scope.message = 'Hello';
+    $scope.createSyllaus = function(){
+      console.log($scope.newSyllabus);
+
+    }
   });

@@ -13,17 +13,16 @@
       <form class="form-inline">
         <div class="form-group">
           <label class="sr-only" for="syllabusTitle">Title</label>
-          <input class="form-control" id="syllabusTitle" placeholder="Title">
+          <input ng-model="newSyllabus.name" class="form-control" id="syllabusTitle" placeholder="Title">
         </div>
         <div class="form-group">
           <label class="sr-only" for="syllabusLecturer">Lecturer</label>
-          <input class="form-control" id="syllabusLecturer" placeholder="Lecturer">
+          <input ng-model="newSyllabus.lecturer" class="form-control" id="syllabusLecturer" placeholder="Lecturer">
         </div>
-        <button class="btn btn-success">Add Syllabus</button>
+        <button class="btn btn-success" ng-click="createSyllaus()">Add Syllabus</button>
       </form>
     </div>
   </div>
 
 </div>
-
 <footer></footer>
