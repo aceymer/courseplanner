@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('courseplannerApp')
-  .controller('SyllabusCtrl', function ($scope) {
+  .controller('SyllabusCtrl', function ($scope, SyllabusService) {
     $scope.createSyllaus = function(){
-      console.log($scope.newSyllabus);
-
+      SyllabusService.save($scope.newSyllabus, function(syllabus) {
+        console.log(syllabus);
+      })
     }
   });
