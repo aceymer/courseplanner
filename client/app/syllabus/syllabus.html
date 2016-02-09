@@ -21,9 +21,17 @@
         </div>
         <button class="btn btn-success" ng-click="createSyllaus()">Add Syllabus</button>
       </form>
+      <div class="media" ng-repeat="syllabus in syllabuses" >
+        <div class="media-left">
+          <a href="#">
+            <img class="media-object pull-left" src="http://placehold.it/64x64">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">{{syllabus.title}}</h4>
+          <h6> - {{syllabus.lecturer ? syllabus.lecturer : 'unknown'}}</h6>
 
-      <div ng-repeat="syllabus in syllabuses">
-        {{syllabus.title}}
+        </div>
       </div>
     </div>
   </div>
