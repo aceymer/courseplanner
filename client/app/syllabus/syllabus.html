@@ -19,17 +19,22 @@
           <label class="sr-only" for="syllabusLecturer">Lecturer</label>
           <input ng-model="newSyllabus.lecturer" class="form-control" id="syllabusLecturer" placeholder="Lecturer">
         </div>
+        <div class="form-group">
+          <label class="sr-only" for="syllabusUrl">Url</label>
+          <input ng-model="newSyllabus.iconurl" class="form-control" id="syllabusUrl" placeholder="Url for your image">
+        </div>
         <button class="btn btn-success" ng-click="createSyllaus()">Add Syllabus</button>
       </form>
 
       <md-list>
         <md-subheader class="md-no-sticky">Syllabuses</md-subheader>
-        <md-list-item class="md-3-line" ng-click="goToSyllabus(syllabus)" ng-repeat="syllabus in syllabuses">
-          <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+        <md-list-item class="md-2-line" ng-click="goToSyllabus(syllabus)" ng-repeat="syllabus in syllabuses">
+          <img ng-src="{{syllabus.iconurl}}" class="md-avatar" alt="{{item.who}}" />
           <div class="md-list-item-text" layout="column">
             <h4 class="media-heading">{{syllabus.title}}</h4>
             <h6> - {{syllabus.lecturer ? syllabus.lecturer : 'unknown'}}</h6>
           </div>
+          <md-button class="md-secondary" ng-click="deleteSyllabus(syllabus)">Delete</md-button>
         </md-list-item>
       </md-list>
 

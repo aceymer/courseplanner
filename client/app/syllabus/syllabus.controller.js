@@ -13,6 +13,12 @@ angular.module('courseplannerApp')
       })
     }
 
+    $scope.deleteSyllabus = function(syllabus){
+      SyllabusService.delete({id: syllabus._id}, function(syllabus) {
+        console.log("Syllabus deletred");
+      });
+    }
+
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('syllabus');
     });
