@@ -21,18 +21,18 @@
         </div>
         <button class="btn btn-success" ng-click="createSyllaus()">Add Syllabus</button>
       </form>
-      <div class="media" ng-repeat="syllabus in syllabuses" >
-        <div class="media-left">
-          <a href="#">
-            <img class="media-object pull-left" src="http://placehold.it/64x64">
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading">{{syllabus.title}}</h4>
-          <h6> - {{syllabus.lecturer ? syllabus.lecturer : 'unknown'}}</h6>
 
-        </div>
-      </div>
+      <md-list>
+        <md-subheader class="md-no-sticky">Syllabuses</md-subheader>
+        <md-list-item class="md-3-line" ng-click="goToSyllabus(syllabus)" ng-repeat="syllabus in syllabuses">
+          <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+          <div class="md-list-item-text" layout="column">
+            <h4 class="media-heading">{{syllabus.title}}</h4>
+            <h6> - {{syllabus.lecturer ? syllabus.lecturer : 'unknown'}}</h6>
+          </div>
+        </md-list-item>
+      </md-list>
+
     </div>
   </div>
 
