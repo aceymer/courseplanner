@@ -18,7 +18,7 @@ Syllabus.find({}).removeAsync()
         lecturer: 'Lars Juul Bilde',
         iconurl: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Meanstack-624x250.jpg',
         owner: '569e69cc1ab998358d37667d',
-        objectives: 'Learn how to make a MEAN fullstack using JS',
+        objectives: '<ul><li>Go to this page&nbsp;<a href="http://google.com">http://google.com</a><a href="http://google.com"></a></li><li>Do this</li><li>Then This</li><li>Drink this.</li><li>I like cheese.</li></ul>',
         weekplans: [{
           week: 4,
           summary: 'Awesome week',
@@ -44,7 +44,7 @@ Syllabus.find({}).removeAsync()
         title: 'Android Development',
         education: 'Computer Science, 4th semester, Spring',
         owner: '569e69cc1ab998358d37667e',
-        objectives: 'Learn how to make a great Android Applications\nImportant stuff'
+        objectives: '<ul><li>Go to this page&nbsp;<a href="http://google.com">http://google.com</a><a href="http://google.com"></a></li><li>Do this</li><li>Then This</li><li>Drink this.</li><li>I like cheese.</li></ul>',
       })
       .then(() => {
         console.log('finished populating syllabuses');

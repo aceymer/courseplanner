@@ -22,7 +22,6 @@
   </div>
   <hr>
 </md-content>
-
 <md-content flex-offset="5" flex="90" ng-if="!editingWeekplan">
   <div flex-sm="100" flex-xs="100" layout="column">
     <md-list>
@@ -36,7 +35,7 @@
       </md-list-item>
     </md-list>
     <h4>Objectives:</h4>
-    <div ng-bind-html="toTrusted(syllabus.objectives)"></div>
+    <div ng-bind-html="syllabus.objectives"></div>
   </div>
 </md-content>
 
