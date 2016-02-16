@@ -5,4 +5,8 @@ angular.module('courseplannerApp')
     SyllabusService.get({id:$stateParams.id}, function(syllabus) {
       $scope.syllabus = syllabus;
     });
+
+    $scope.goBack = function(){
+      window.history.back();
+    };
   });
