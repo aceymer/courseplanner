@@ -9,4 +9,13 @@ angular.module('courseplannerApp')
     $scope.goBack = function(){
       window.history.back();
     };
+
+    $scope.editWeekPlan = function(weekplan){
+      $scope.editingWeekplan = weekplan;
+    };
+
+    $scope.undoWeekplanEdit = function(){
+      $scope.editingWeekplan = undefined;
+    }
+
   });

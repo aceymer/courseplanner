@@ -29,7 +29,11 @@
         <div flex flex-sm="100" flex-xs="100" layout="row">
           <p flex="10"><i class="fa fa-calendar"></i> Week {{weekplan.week}} </p>
           <p flex pull-right>{{weekplan.teaser}}</p>
-          <p flex></p>
+          <div flex="5">
+            <md-button ng-click="editWeekPlan(weekplan)" class="md-icon-button" aria-label="Open sample menu">
+              <i class="fa fa-pencil"></i>
+            </md-button>
+          </div>
         </div>
         <md-divider></md-divider>
       </md-list-item>
@@ -37,6 +41,12 @@
     <h4>Objectives:</h4>
     <div ng-bind-html="syllabus.objectives"></div>
   </div>
+</md-content>
+
+<md-content layout-padding flex-offset="30" flex="40" ng-if="editingWeekplan" class="animate-new-course">
+  <md-button aria-label="Undo changes" ng-click="undoWeekplanEdit()" class="md-raised md-warning">
+    <i class="fa fa-undo"></i> Cancel
+  </md-button>
 </md-content>
 
 <footer></footer>
