@@ -1,3 +1,43 @@
 <navbar></navbar>
-<h1>{{syllabus.title}}</h1>
+<md-content flex-offset="5" flex="90">
+  <div flex-sm="100" flex-xs="100" layout="row">
+    <div flex="5">
+      <md-button class="md-fab md-mini md-primary" aria-label="Go Back" ng-click="goBack()">
+        <i class="fa fa-arrow-left"></i>
+      </md-button>
+    </div>
+
+    <div flex>
+      <md-list-item class="md-3-line">
+        <div hide-sm hide-xs>
+          <img ng-src="{{syllabus.iconurl}}" alt="MEAN" style="max-height:120px; height: auto; margin-right:20px;margin-top:10px;">
+        </div>
+        <div flex-sm="100" flex-xs="100" class="md-list-item-text" layout="column">
+          <h2>{{ syllabus.title }}</h2>
+          <h3>{{ syllabus.education }} {{ syllabus.year }}</h3>
+          <h4>{{ syllabus.academy }}, {{ syllabus.lecturer || syllabus.owner.name }}</h4>
+        </div>
+      </md-list-item>
+    </div>
+  </div>
+  <hr>
+</md-content>
+
+<md-content flex-offset="5" flex="90" ng-if="!editingWeekplan">
+  <div flex-sm="100" flex-xs="100" layout="column">
+    <md-list>
+      <md-list-item aria-label="Weekplan" ng-click="goToWeekPlan(weekplan, $event)" ng-repeat="weekplan in syllabus.weekplans | orderBy : '-week'">
+        <div flex flex-sm="100" flex-xs="100" layout="row">
+          <p flex="10"><i class="fa fa-calendar"></i> Week {{weekplan.week}} </p>
+          <p flex pull-right>{{weekplan.teaser}}</p>
+          <p flex></p>
+        </div>
+        <md-divider></md-divider>
+      </md-list-item>
+    </md-list>
+    <h4>Objectives:</h4>
+    <div ng-bind-html="toTrusted(syllabus.objectives)"></div>
+  </div>
+</md-content>
+
 <footer></footer>
