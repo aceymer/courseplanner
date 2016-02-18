@@ -44,9 +44,45 @@
 </md-content>
 
 <md-content layout-padding flex-offset="30" flex="40" ng-if="editingWeekplan" class="animate-new-course">
-  <md-button aria-label="Undo changes" ng-click="undoWeekplanEdit()" class="md-raised md-warning">
-    <i class="fa fa-undo"></i> Cancel
-  </md-button>
+  <form name="editWeekplanForm" style="margin-bottom:10px;">
+    <md-input-container flex="25" class="md-block">
+      <label>Week</label>
+      <input required min="1" max="43" ng-model="editingWeekplan.week" type="Number" name="weekOfYear">
+      <div ng-messages="editWeekplanForm.weekOfYear.$error" role="alert">
+        <div ng-message="required">Please specify a week.</div>
+        <div ng-message="min"> Must be a weeknumber 1-43 </div>
+        <div ng-message="max"> Must be a weeknumber 1-43 </div>
+      </div>
+    </md-input-container>
+
+    <md-input-container flex class="md-block">
+      <label>Theme</label>
+      <input ng-model="editingWeekplan.teaser" type="text" md-maxlength="100" required name="teaser">
+      <div ng-messages="editWeekplanForm.teaser.$error" role="alert">
+        <div ng-message="required">Please a theme text.</div>
+        <div ng-message="md-maxlength">The theme has to be less than 100 characters long.</div>
+      </div>
+    </md-input-container>
+
+    <md-input-container flex="30" class="md-block">
+      <md-switch ng-model="editingWeekplan.enabled">{{editingWeekplan.enabled ? "Enabled" : "Disbled"}}</md-switch>
+    </md-input-container>
+
+    <div layout-gt-xs="row">
+      <md-button aria-label="Delete weekplan" class="md-raised md-danger" ng-click="deleteWeekPlan(weekplan, $event)">
+        <div style="color:darkred;">
+          <i class="fa fa-trash"></i> Delete
+        </div>
+      </md-button>
+      <p flex></p>
+      <md-button aria-label="Save changes" ng-click="saveWeekplanEdit(editWeekplanForm)" class="md-raised md-primary">
+        <i class="fa fa-floppy-o"></i> Save changes
+      </md-button>
+      <md-button aria-label="Undo changes" ng-click="undoWeekplanEdit($event)" class="md-raised md-warning">
+        <i class="fa fa-undo"></i> Cancel
+      </md-button>
+    </div>
+  </form>
 </md-content>
 
 <footer></footer>
