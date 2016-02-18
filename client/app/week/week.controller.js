@@ -32,7 +32,7 @@ angular.module('courseplannerApp')
           return plan._id === $scope.editingWeekplan._id;
         });
 
-        Syllabus.update({
+        SyllabusService.update({
           id: $scope.syllabus._id
         }, $scope.syllabus, function(syllabus) {
           $scope.syllabus = syllabus;
