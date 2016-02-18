@@ -11,7 +11,8 @@ angular.module('courseplannerApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'ngMaterial'
+  'ngMaterial',
+  'ngMessages'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
