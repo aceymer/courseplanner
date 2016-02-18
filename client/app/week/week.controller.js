@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('courseplannerApp')
-  .controller('WeekCtrl', function ($scope, $stateParams, $mdDialog, SyllabusService) {
+  .controller('WeekCtrl', function ($scope, $stateParams, $mdDialog, $mdToast, SyllabusService) {
     SyllabusService.get({id:$stateParams.id}, function(syllabus) {
       $scope.syllabus = syllabus;
     });

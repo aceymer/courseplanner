@@ -38,3 +38,6 @@
   padding: 0.2em 0;
 }
 
+md-toast {
+z-index: 10000;
+}
