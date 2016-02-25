@@ -6,6 +6,7 @@ angular.module('courseplannerApp')
       $scope.syllabus = syllabus;
     });
 
+
     $scope.goBack = function(){
       window.history.back();
     };
@@ -46,5 +47,29 @@ angular.module('courseplannerApp')
         });
       });
     };
+
+    //Added in tag v2.1.14 ------- from ----
+    $scope.newWeekplan = {};
+
+    $scope.addWeekplan = function(form) {
+      if (form.$valid) {
+        $scope.newWeekplan.enabled = true;
+        $scope.syllabus.weekplans.push($scope.newWeekplan);
+        SyllabusService.update({
+          id: $scope.syllabus._id
+        }, $scope.syllabus, function(syllabus) {
+          $scope.syllabus = syllabus;
+          form.$setPristine();
+          form.$setUntouched();
+          var toast = $mdToast.simple()
+            .textContent('Weekplan created')
+            .action('OK')
+            .highlightAction(false)
+            .position('top');
+          $mdToast.show(toast);
+        });
+      }
+    };
+    //Added in tag v2.1.14 ------- to ----
 
   });
