@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('courseplannerApp')
-  .controller('WeekCtrl', function ($scope, $stateParams, $mdDialog, $mdToast, SyllabusService) {
+  .controller('WeekCtrl', function ($scope, $stateParams, $mdDialog, $mdToast, SyllabusService, Auth) {
+
+    //Added in tag v2.1.15
+    $scope.isAdmin = Auth.isAdmin;
+
     SyllabusService.get({id:$stateParams.id}, function(syllabus) {
       $scope.syllabus = syllabus;
     });
-
 
     $scope.goBack = function(){
       window.history.back();

@@ -25,7 +25,7 @@
 <md-content flex-offset="5" flex="90" ng-if="!editingWeekplan">
   <div flex-sm="100" flex-xs="100" layout="column">
     <!--//Form added in tag v2.1.14-->
-    <form name="newWeekplanForm">
+    <form name="newWeekplanForm" ng-if="isAdmin()">
       <md-list-item style="margin-bottom:10px;">
         <md-input-container flex="15" class="md-block">
           <label>Week</label>
@@ -55,7 +55,7 @@
         <div flex flex-sm="100" flex-xs="100" layout="row">
           <p flex="10"><i class="fa fa-calendar"></i> Week {{weekplan.week}} </p>
           <p flex pull-right>{{weekplan.teaser}}</p>
-          <div flex="5">
+          <div flex="5" ng-if="isAdmin()">
             <md-button ng-click="editWeekPlan(weekplan)" class="md-icon-button" aria-label="Open sample menu">
               <i class="fa fa-pencil"></i>
             </md-button>
