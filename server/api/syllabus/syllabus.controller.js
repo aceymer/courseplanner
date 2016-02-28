@@ -61,14 +61,16 @@ function removeEntity(res) {
 
 // Gets a list of Syllabuss
 export function index(req, res) {
-  Syllabus.findAsync()
+  Syllabus.find({}).populate('owner', 'name email')
+    .execAsync()
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single Syllabus from the DB
 export function show(req, res) {
-  Syllabus.findByIdAsync(req.params.id)
+  Syllabus.findById(req.params.id).populate('owner', 'name email')
+    .execAsync()
     .then(handleEntityNotFound(res))
     .then(responseWithResult(res))
     .catch(handleError(res));
