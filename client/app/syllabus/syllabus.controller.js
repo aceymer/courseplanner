@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('courseplannerApp')
-  .controller('SyllabusCtrl', function($scope, $state, SyllabusService, socket) {
+  .controller('SyllabusCtrl', function($scope, $state, SyllabusService, socket, Auth) {
+    $scope.isAuthenticated = Auth.isLoggedIn;
+
     SyllabusService.query(function(syllabuses) {
       $scope.syllabuses = syllabuses;
       socket.syncUpdates('syllabus', $scope.syllabuses);
