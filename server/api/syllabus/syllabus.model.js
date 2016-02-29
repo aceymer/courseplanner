@@ -10,7 +10,7 @@ var SyllabusSchema = new mongoose.Schema({
   education: String,
   lecturer: String,
   owner: {
-    type: Schema.ObjectId,
+    type: Schema.ObjectId, 
     ref: 'User'
   },
   objectives: String,
