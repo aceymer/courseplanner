@@ -13,6 +13,10 @@ angular.module('courseplannerApp')
       socket.syncUpdates('syllabus', $scope.syllabuses);
     });
     $scope.createSyllaus = function() {
+
+      //Owner added v0.2.19
+      $scope.newSyllabus.owner =  Auth.getCurrentUser();
+
       SyllabusService.save($scope.newSyllabus, function(syllabus) {
         $scope.newSyllabus = {};
 
