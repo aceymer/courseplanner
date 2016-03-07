@@ -50,12 +50,21 @@ export function hasRole(roleRequired) {
   return compose()
     .use(isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
-      if (config.userRoles.indexOf(req.user.role) >=
-          config.userRoles.indexOf(roleRequired)) {
+      var userIsInRole;
+      if (Array.isArray(req.user.role)) {
+        req.user.role.forEach(function(userRole) {
+          if (config.userRoles.indexOf(userRole) >= config.userRoles.indexOf(roleRequired)) {
+            userIsInRole = true;
+          }
+        });
+      }
+
+      if (userIsInRole) {
         next();
       } else {
         res.status(403).send('Forbidden');
       }
+
     });
 }
 
@@ -63,7 +72,10 @@ export function hasRole(roleRequired) {
  * Returns a jwt token signed by the app secret
  */
 export function signToken(id, role) {
-  return jwt.sign({ _id: id, role: role }, config.secrets.session, {
+  return jwt.sign({
+    _id: id,
+    role: role
+  }, config.secrets.session, {
     expiresIn: 60 * 60 * 5
   });
 }

@@ -3,7 +3,7 @@
 
 angular.module('courseplannerApp.constants', [])
 
-.constant('appConfig', {userRoles:['guest','user','admin']})
+.constant('appConfig', {userRoles:['guest','user','admin','superAdmin']})
 
 ;
 })(angular);
