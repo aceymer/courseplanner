@@ -10,6 +10,13 @@ angular.module('courseplannerApp')
       socket.syncUpdates('user', $scope.users);
     });
 
+    $scope.goToUser = function(user) {
+
+      $state.go('userdetails', {
+        id: user._id
+      });
+    }
+
 
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('user');
