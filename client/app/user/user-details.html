@@ -1,0 +1,23 @@
+<navbar></navbar>
+<md-content flex-offset="5" flex="90">
+  <div flex-sm="100" flex-xs="100" layout="row">
+    <div flex="5">
+      <md-button class="md-fab md-mini md-primary" aria-label="Go Back" ng-click="goBack()">
+        <i class="fa fa-arrow-left"></i>
+      </md-button>
+    </div>
+
+    <div flex>
+      <md-list-item class="md-3-line">
+        <div flex-sm="100" flex-xs="100" class="md-list-item-text" layout="column">
+          <h2>{{ user.name }}</h2>
+          <h3>{{ user.email }}</h3>
+        </div>
+      </md-list-item>
+    </div>
+  </div>
+  <hr>
+</md-content>
+
+
+<footer></footer>
