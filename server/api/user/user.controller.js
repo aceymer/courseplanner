@@ -1,5 +1,6 @@
 'use strict';
 
+import _ from 'lodash';
 import User from './user.model';
 import passport from 'passport';
 import config from '../../config/environment';
@@ -10,6 +11,26 @@ function validationError(res, statusCode) {
   return function(err) {
     res.status(statusCode).json(err);
   }
+}
+
+function saveUpdates(updates) {
+  return function(entity) {
+    var updated = _.assign(entity, updates);
+    return updated.saveAsync()
+      .spread(updated => {
+        return updated;
+      });
+  };
+}
+
+function handleEntityNotFound(res) {
+  return function(entity) {
+    if (!entity) {
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
 }
 
 function handleError(res, statusCode) {
@@ -35,6 +56,18 @@ export function index(req, res) {
     .then(users => {
       res.status(200).json(users);
     })
+    .catch(handleError(res));
+}
+
+// Updates an existing user in the DB
+export function update(req, res) {
+  if (req.body._id) {
+    delete req.body._id;
+  }
+  User.findByIdAsync(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(saveUpdates(req.body))
+    .then(respondWith(res))
     .catch(handleError(res));
 }
 

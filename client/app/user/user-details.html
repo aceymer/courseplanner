@@ -12,8 +12,13 @@
         <div flex-sm="100" flex-xs="100" class="md-list-item-text" layout="column">
           <h2>{{ user.name }}</h2>
           <h3>{{ user.email }}</h3>
+          <md-select multiple ng-model="user.role" placeholder="please select">
+            <md-option ng-repeat="role in userRoles" value="{{role}}">{{role}}</md-option>
+          </md-select>
         </div>
       </md-list-item>
+      <button class="btn btn-success" ng-click="saveUser()">Save</button>
+
     </div>
   </div>
   <hr>
