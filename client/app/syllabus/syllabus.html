@@ -29,9 +29,20 @@
         <label for="searchText">Search</label>
         <input ng-model="search" class="form-control" id="searchText" placeholder="Write what you are looking for">
       </div>
+
+
+      <div class="form-group">
+        <md-button class="md-raised md-primary" ng-click="sort('title')">Sort on title
+            <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i>
+        </md-button>
+        <md-button class="md-raised md-primary" ng-click="sort('lecturer')">Sort on lecturer
+            <i class="fa" ng-show="propToSortOn=='lecturer'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i>
+        </md-button>
+      </div>
+
       <md-list>
         <md-subheader class="md-no-sticky">Syllabuses</md-subheader>
-        <md-list-item class="md-2-line" ng-click="goToSyllabus(syllabus)" ng-repeat="syllabus in syllabuses | filter:{ title: search }">
+        <md-list-item class="md-2-line" ng-click="goToSyllabus(syllabus)" ng-repeat="syllabus in syllabuses | orderBy:propToSortOn:reverse | filter:{ title: search }">
           <img ng-src="{{syllabus.iconurl}}" class="md-avatar" alt="{{item.who}}" />
           <div class="md-list-item-text" layout="column">
             <h4 class="media-heading">{{syllabus.title}}</h4>

@@ -3,6 +3,13 @@
 angular.module('courseplannerApp')
   .controller('SyllabusCtrl', function($scope, $state, SyllabusService, socket, Auth) {
     $scope.isAuthenticated = Auth.isLoggedIn;
+    $scope.propToSortOn = 'title';
+    $scope.reverse = false;
+
+    $scope.sort = function(keyname){
+       $scope.propToSortOn = keyname;
+       $scope.reverse = !$scope.reverse;
+     }
 
     $scope.isOwner = function(syllabus){
       return Auth.getCurrentUser()._id === syllabus.owner._id;
