@@ -18,3 +18,21 @@ router.delete('/:id', syllabusAuth.isOwner(), controller.destroy);
 
 
 module.exports = router;
+
+
+
+
+/*var restify = require('express-restify-mongoose')
+
+restify.serve(router, Syllabus, {
+  //preMiddleware: auth.isAuthenticated(),
+  /*access: function (req, done) {
+    if (req.user) {
+      return 'private'
+    } else {
+      return 'public'
+    }
+  },
+  private: ['title', 'lecturer'],
+  public: ['education']
+});*/
