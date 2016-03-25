@@ -42,7 +42,7 @@
 
       <md-list>
         <md-subheader class="md-no-sticky">Syllabuses</md-subheader>
-        <md-list-item class="md-2-line" ng-click="goToSyllabus(syllabus)" ng-repeat="syllabus in syllabuses | orderBy:propToSortOn:reverse | filter:{ title: search }">
+        <md-list-item class="md-2-line" ng-click="goToSyllabus(syllabus)" dir-paginate="syllabus in syllabuses | orderBy:propToSortOn:reverse | filter:{ title: search } | itemsPerPage:10">
           <img ng-src="{{syllabus.iconurl}}" class="md-avatar" alt="{{item.who}}" />
           <div class="md-list-item-text" layout="column">
             <h4 class="media-heading">{{syllabus.title}}</h4>
@@ -51,6 +51,12 @@
           <md-button ng-show="isOwner(syllabus)" class="md-secondary" ng-click="deleteSyllabus(syllabus)">Delete</md-button>
         </md-list-item>
       </md-list>
+
+      <dir-pagination-controls
+         max-size="10"
+         direction-links="true"
+         boundary-links="true" >
+      </dir-pagination-controls>
 
     </div>
   </div>
