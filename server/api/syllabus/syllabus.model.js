@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('bluebird').promisifyAll(require('mongoose')),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    paginator = require('mongoose-paginate');
 
 var SyllabusSchema = new mongoose.Schema({
   academy: String,
@@ -10,7 +11,7 @@ var SyllabusSchema = new mongoose.Schema({
   education: String,
   lecturer: String,
   owner: {
-    type: Schema.ObjectId, 
+    type: Schema.ObjectId,
     ref: 'User'
   },
   objectives: String,
@@ -26,5 +27,6 @@ var SyllabusSchema = new mongoose.Schema({
   }]
 });
 
+SyllabusSchema.plugin(paginator);
 
 export default mongoose.model('Syllabus', SyllabusSchema);
