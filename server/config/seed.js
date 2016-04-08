@@ -51,7 +51,7 @@ Syllabus.find({}).removeAsync()
       });
 
       var syllaArray = [];
-      for (var i = 1; i < 20000; i++) {
+      for (var i = 1; i < 5000; i++) {
         syllaArray.push({
           academy: 'Business Academy SouthWest',
           year: i,
