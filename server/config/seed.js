@@ -51,10 +51,10 @@ Syllabus.find({}).removeAsync()
       });
 
       var syllaArray = [];
-      for (var i = 1; i < 200; i++) {
+      for (var i = 1; i < 20000; i++) {
         syllaArray.push({
           academy: 'Business Academy SouthWest',
-          year: 2016,
+          year: i,
           title: 'JS Web Apps - ' + i,
           education: 'Computer Science, 4th semester, Spring',
           lecturer: 'Lars Juul Bilde',
