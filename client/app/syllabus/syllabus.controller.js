@@ -7,16 +7,20 @@ angular.module('courseplannerApp')
     $scope.propToSortOn = 'title';
     $scope.reverse = false;
     //Add the line below....
-      $scope.newSyllabus = {};
+    $scope.newSyllabus = {};
 
-      $scope.sort = function(keyname){
-         $scope.propToSortOn = keyname;
-         $scope.reverse = !$scope.reverse;
-       };
+    $scope.sort = function(keyname){
+       $scope.propToSortOn = keyname;
+       $scope.reverse = !$scope.reverse;
+     };
 
-      $scope.isOwner = function(syllabus){
-        return Auth.getCurrentUser()._id === syllabus.owner._id;
-      };
+    $scope.isOwner = function(syllabus){
+      if(Auth.getCurrentUser()._id === syllabus.owner._id){
+        console.log('curent: ', Auth.getCurrentUser()._id);
+        console.log('owner: ', syllabus.owner._id);
+      }
+      return Auth.getCurrentUser()._id === syllabus.owner._id;
+    };
 
     SyllabusService.query(function(syllabuses) {
       $scope.syllabuses = syllabuses;

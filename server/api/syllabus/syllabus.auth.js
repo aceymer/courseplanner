@@ -10,10 +10,12 @@ var compose = require('composable-middleware');
  */
  export function isOwner() {
   return compose()
-    .use(auth.hasRole('admin'))
+    .use(auth.isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
       Syllabus.findById(req.params.id).execAsync()
       .then(function(syllabus){
+        console.log('syll', syllabus.owner);
+        console.log('req.user._id', req.user._id);
         if (syllabus && req.user._id && req.user._id.equals(syllabus.owner)) {
           next();
         } else {
