@@ -48,7 +48,7 @@
             <h4 class="media-heading">{{syllabus.title}}</h4>
             <h6> - {{syllabus.lecturer ? syllabus.lecturer : 'unknown'}}</h6>
           </div>
-          <md-button ng-show="isOwner(syllabus)" class="md-secondary" ng-click="deleteSyllabus(syllabus)">Delete</md-button>
+          <md-button ng-if="isOwner(syllabus)" class="md-secondary" ng-click="deleteSyllabus(syllabus)">Delete</md-button>
         </md-list-item>
       </md-list>
 
