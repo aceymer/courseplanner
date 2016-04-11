@@ -15,10 +15,6 @@ angular.module('courseplannerApp')
      };
 
     $scope.isOwner = function(syllabus){
-      if(Auth.getCurrentUser()._id === syllabus.owner._id){
-        console.log('curent: ', Auth.getCurrentUser()._id);
-        console.log('owner: ', syllabus.owner._id);
-      }
       return Auth.getCurrentUser()._id === syllabus.owner._id;
     };
 
@@ -33,8 +29,6 @@ angular.module('courseplannerApp')
 
       SyllabusService.save($scope.newSyllabus, function(syllabus) {
         $scope.newSyllabus = {};
-        console.log('Syllabus created', syllabus);
-
       });
     };
 
@@ -42,7 +36,6 @@ angular.module('courseplannerApp')
       SyllabusService.delete({
         id: syllabus._id
       }, function(syllabus) {
-        console.log('Syllabus deleted', syllabus);
       });
     };
 
