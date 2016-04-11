@@ -1,3 +1,4 @@
+
 'use strict';
 
 angular.module('courseplannerApp')
@@ -5,15 +6,17 @@ angular.module('courseplannerApp')
     $scope.isAuthenticated = Auth.isLoggedIn;
     $scope.propToSortOn = 'title';
     $scope.reverse = false;
+    //Add the line below....
+      $scope.newSyllabus = {};
 
-    $scope.sort = function(keyname){
-       $scope.propToSortOn = keyname;
-       $scope.reverse = !$scope.reverse;
-     }
+      $scope.sort = function(keyname){
+         $scope.propToSortOn = keyname;
+         $scope.reverse = !$scope.reverse;
+       };
 
-    $scope.isOwner = function(syllabus){
-      return Auth.getCurrentUser()._id === syllabus.owner._id;
-    }
+      $scope.isOwner = function(syllabus){
+        return Auth.getCurrentUser()._id === syllabus.owner._id;
+      };
 
     SyllabusService.query(function(syllabuses) {
       $scope.syllabuses = syllabuses;
@@ -26,24 +29,25 @@ angular.module('courseplannerApp')
 
       SyllabusService.save($scope.newSyllabus, function(syllabus) {
         $scope.newSyllabus = {};
+        console.log('Syllabus created', syllabus);
 
-      })
-    }
+      });
+    };
 
     $scope.deleteSyllabus = function(syllabus) {
       SyllabusService.delete({
         id: syllabus._id
       }, function(syllabus) {
-        console.log("Syllabus deletred");
+        console.log('Syllabus deleted', syllabus);
       });
-    }
+    };
 
     $scope.goToSyllabus = function(syllabus) {
 
       $state.go('week', {
         id: syllabus._id
       });
-    }
+    };
 
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('syllabus');
