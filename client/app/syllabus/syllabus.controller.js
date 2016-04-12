@@ -17,7 +17,7 @@ angular.module('courseplannerApp')
         { page: pageNumber,
           limit: $scope.syllabusesPerPage,
           sortBy: $scope.propToSortOn,
-          search: $scope.search.value }, 
+          search: $scope.search.value },
         function(syllabuses) {
           $scope.totalSyllabuses = syllabuses.total;
           $scope.syllabuses = syllabuses.docs;
@@ -55,7 +55,6 @@ angular.module('courseplannerApp')
         getResultsPage(newPage);
     };
 
-
     $scope.createSyllaus = function() {
 
       //Owner added v0.2.19
@@ -63,15 +62,14 @@ angular.module('courseplannerApp')
 
       SyllabusService.save($scope.newSyllabus, function() {
         $scope.newSyllabus = {};
-
       });
     };
 
     $scope.deleteSyllabus = function(syllabus) {
       SyllabusService.delete({
         id: syllabus._id
-      }, function() {
-        console.log('Syllabus deletred');
+      }, function(syllabus) {
+        console.log('Syllabus deleted', syllabus);
       });
     };
 
