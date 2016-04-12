@@ -25,37 +25,41 @@
         </div>
         <button class="btn btn-success" ng-click="createSyllaus()">Add Syllabus</button>
       </form>
+
       <div class="form-group">
         <label for="searchText">Search</label>
-        <input ng-model="search" class="form-control" id="searchText" placeholder="Write what you are looking for">
+        <input ng-model="search.value"
+        ng-model-options='{ debounce: 100 }'
+        class="form-control" id="searchText"
+        placeholder="Write what you are looking for">
       </div>
 
 
       <div class="form-group">
         <md-button class="md-raised md-primary" ng-click="sort('title')">Sort on title
-            <i class="fa" ng-show="propToSortOn=='title'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i>
+            <i class="fa" ng-show="propToSortOn=='title' || propToSortOn=='-title'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i>
         </md-button>
         <md-button class="md-raised md-primary" ng-click="sort('lecturer')">Sort on lecturer
-            <i class="fa" ng-show="propToSortOn=='lecturer'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i>
+            <i class="fa" ng-show="propToSortOn=='lecturer' || propToSortOn=='-lecturer'" ng-class="{'fa-arrow-down':reverse,'fa-arrow-up':!reverse}"></i>
         </md-button>
       </div>
 
       <md-list>
         <md-subheader class="md-no-sticky">Syllabuses</md-subheader>
-        <md-list-item class="md-2-line" ng-click="goToSyllabus(syllabus)" dir-paginate="syllabus in syllabuses | orderBy:propToSortOn:reverse | filter:{ title: search } | itemsPerPage:10">
+        <md-list-item class="md-2-line" ng-click="goToSyllabus(syllabus)"
+          dir-paginate="syllabus in syllabuses | itemsPerPage:syllabusesPerPage"
+          total-items="totalSyllabuses" current-page="pagination.current">
           <img ng-src="{{syllabus.iconurl}}" class="md-avatar" alt="{{item.who}}" />
           <div class="md-list-item-text" layout="column">
             <h4 class="media-heading">{{syllabus.title}}</h4>
+            <h5>{{syllabus.year}}</h5>
             <h6> - {{syllabus.lecturer ? syllabus.lecturer : 'unknown'}}</h6>
           </div>
           <md-button ng-show="isOwner(syllabus)" class="md-secondary" ng-click="deleteSyllabus(syllabus)">Delete</md-button>
         </md-list-item>
       </md-list>
 
-      <dir-pagination-controls
-         max-size="10"
-         direction-links="true"
-         boundary-links="true" >
+      <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" >
       </dir-pagination-controls>
 
     </div>

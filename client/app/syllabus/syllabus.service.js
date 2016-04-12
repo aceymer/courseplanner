@@ -7,6 +7,9 @@ angular.module('courseplannerApp')
       },{
         update: {
           method:'PUT'
+        },
+        paged: {
+          method:'GET'
         }
       });
 });
