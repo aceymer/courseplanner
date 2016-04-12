@@ -16,6 +16,7 @@ var Syllabus = require('./syllabus.model');
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
+    console.error(err);
     res.status(statusCode).send(err);
   };
 }
@@ -89,10 +90,10 @@ export function index(req, res) {
       //Create object for pagination query
       var options = {
         select: 'title lecturer year owner',
-        sort: req.query.sortBy,
+        sort: parseFloat(req.query.sortBy),
         populate: {path: 'owner', select: 'name email'},
         offset: offset,
-        limit: req.query.limit
+        limit: parseFloat(req.query.limit)
       };
 
       //Do the actual pagination
