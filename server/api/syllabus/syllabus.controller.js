@@ -90,7 +90,7 @@ export function index(req, res) {
       //Create object for pagination query
       var options = {
         select: 'title lecturer year owner',
-        sort: parseFloat(req.query.sortBy),
+        sort: req.query.sortBy,
         populate: {path: 'owner', select: 'name email'},
         offset: offset,
         limit: parseFloat(req.query.limit)
