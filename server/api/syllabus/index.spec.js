@@ -10,6 +10,21 @@ var syllabusCtrlStub = {
   destroy: 'syllabusCtrl.destroy'
 };
 
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
+};
+
+var syllabusAuthServiceStub = {
+  isOwner() {
+    return 'syllabusAuthServiceStub.isOwner';
+  }
+};
+
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
@@ -25,7 +40,9 @@ var syllabusIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './syllabus.controller': syllabusCtrlStub
+  './syllabus.controller': syllabusCtrlStub,
+  '../../auth/auth.service': authServiceStub,
+  './syllabus.auth': syllabusAuthServiceStub
 });
 
 describe('Syllabus API Router:', function() {
@@ -38,7 +55,7 @@ describe('Syllabus API Router:', function() {
 
     it('should route to syllabus.controller.index', function() {
       routerStub.get
-        .withArgs('/', 'syllabusCtrl.index')
+        .withArgs('/', 'authService.isAuthenticated', 'syllabusCtrl.index')
         .should.have.been.calledOnce;
     });
 
@@ -48,7 +65,7 @@ describe('Syllabus API Router:', function() {
 
     it('should route to syllabus.controller.show', function() {
       routerStub.get
-        .withArgs('/:id', 'syllabusCtrl.show')
+        .withArgs('/:id', 'authService.isAuthenticated', 'syllabusCtrl.show')
         .should.have.been.calledOnce;
     });
 
@@ -58,7 +75,7 @@ describe('Syllabus API Router:', function() {
 
     it('should route to syllabus.controller.create', function() {
       routerStub.post
-        .withArgs('/', 'syllabusCtrl.create')
+        .withArgs('/', 'authService.isAuthenticated', 'syllabusCtrl.create')
         .should.have.been.calledOnce;
     });
 
@@ -68,7 +85,7 @@ describe('Syllabus API Router:', function() {
 
     it('should route to syllabus.controller.update', function() {
       routerStub.put
-        .withArgs('/:id', 'syllabusCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'syllabusCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -78,7 +95,7 @@ describe('Syllabus API Router:', function() {
 
     it('should route to syllabus.controller.update', function() {
       routerStub.patch
-        .withArgs('/:id', 'syllabusCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'syllabusCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -88,7 +105,7 @@ describe('Syllabus API Router:', function() {
 
     it('should route to syllabus.controller.destroy', function() {
       routerStub.delete
-        .withArgs('/:id', 'syllabusCtrl.destroy')
+        .withArgs('/:id', 'syllabusAuthServiceStub.isOwner', 'syllabusCtrl.destroy')
         .should.have.been.calledOnce;
     });
 

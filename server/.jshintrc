@@ -1,4 +1,10 @@
 {
+  "predef": [
+    "document",
+    "window",
+    "-Promise",
+    "sinon"
+  ],
   "expr": true,
   "node": true,
   "esnext": true,
@@ -11,5 +17,6 @@
   "undef": true,
   "smarttabs": true,
   "asi": true,
-  "debug": true
+  "debug": true,
+  "mocha": true
 }

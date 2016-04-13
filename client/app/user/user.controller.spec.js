@@ -6,12 +6,15 @@ describe('Controller: UserCtrl', function () {
   beforeEach(module('courseplannerApp'));
 
   var UserCtrl, scope;
+  var stateModels = [{}, {}, {}];
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, User) {
     scope = $rootScope.$new();
+    this.User = User;
     UserCtrl = $controller('UserCtrl', {
-      $scope: scope
+      $scope: scope,
+      users: stateModels
     });
   }));
 

@@ -6,7 +6,7 @@ angular.module('courseplannerApp')
     $scope.isAdmin = Auth.isAdmin;
 
     $scope.userRoles = appConfig.userRoles;
-    User.get({id:$stateParams.id}, function(user) {
+    User.get({name:$stateParams.name}, function(user) {
       $scope.user = user;
     });
 
@@ -23,7 +23,7 @@ angular.module('courseplannerApp')
           .position('top');
         $mdToast.show(toast);
       });
-    }
+    };
 
 
     $scope.goBack = function(){

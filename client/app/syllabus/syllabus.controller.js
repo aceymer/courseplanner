@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('courseplannerApp')
-  .controller('SyllabusCtrl', function($scope, $state, SyllabusService, socket, Auth) {
+  .controller('SyllabusCtrl', function($scope, $state, SyllabusService, socket, Auth, syllabuses) {
     $scope.isAuthenticated = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.propToSortOn = 'title';
@@ -10,6 +10,14 @@ angular.module('courseplannerApp')
     $scope.newSyllabus = {};
     $scope.totalSyllabuses = 0;
     $scope.syllabusesPerPage = 25; // this should match however many results your API puts on one page
+
+    function initialSetup(syllabuses){
+      $scope.totalSyllabuses = syllabuses.total;
+      $scope.syllabuses = syllabuses.docs;
+      $scope.currenPage = 1;
+      socket.syncUpdates('syllabus', $scope.syllabuses);
+    }
+
 
     function getResultsPage(pageNumber) {
 
@@ -22,12 +30,10 @@ angular.module('courseplannerApp')
           $scope.totalSyllabuses = syllabuses.total;
           $scope.syllabuses = syllabuses.docs;
           $scope.currenPage = pageNumber;
-          socket.syncUpdates('syllabus', $scope.syllabuses);
       });
     }
 
     $scope.$watch('search', function() {
-      console.log('changed!!');
       getResultsPage(1);
     }, true);
 
@@ -58,10 +64,11 @@ angular.module('courseplannerApp')
     $scope.createSyllaus = function() {
 
       //Owner added v0.2.19
-      //$scope.newSyllabus.owner =  Auth.getCurrentUser();
+      $scope.newSyllabus.owner =  Auth.getCurrentUser()._id;
 
       SyllabusService.save($scope.newSyllabus, function() {
         $scope.newSyllabus = {};
+        getResultsPage($scope.currenPage);
       });
     };
 
@@ -84,7 +91,6 @@ angular.module('courseplannerApp')
       socket.unsyncUpdates('syllabus');
     });
 
-    getResultsPage(1);
-
+    initialSetup(syllabuses);
 
   });

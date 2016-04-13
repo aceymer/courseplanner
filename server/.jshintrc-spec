@@ -1,8 +1,9 @@
 {
   "extends": ".jshintrc",
+  
   "globals": {
     "jasmine": true,
-    "describe": true,
+    "describe": false,
     "it": true,
     "before": true,
     "beforeEach": true,
@@ -10,6 +11,6 @@
     "afterEach": true,
     "expect": true,
     "assert": true,
-    "sinon": true
+    "sinon": false
   }
 }

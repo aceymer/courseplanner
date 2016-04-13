@@ -6,6 +6,14 @@ angular.module('courseplannerApp')
       .state('main', {
         url: '/',
         templateUrl: 'app/syllabus/syllabus.html',
-        controller: 'SyllabusCtrl'
+        controller: 'SyllabusCtrl',
+        resolve: {
+          syllabuses: function(SyllabusService) {
+            return SyllabusService.paged(
+              { page: 1,
+                limit: 25,
+                sortBy: 'title'});
+          }
+        }
       });
   });
