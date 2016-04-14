@@ -21,3 +21,24 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+.animate-repeat-course.ng-enter {
+   transition: 2s linear all;
+    background-color: lightgreen;
+    opacity: 0;
+}
+
+.animate-repeat-course.ng-enter.ng-enter-active {
+    background-color: #f3f3f3;
+    opacity: 1;
+}
+
+.animate-repeat-course.ng-leave {
+    transition: 1s linear all;
+    background-color: #FF6F79;
+    opacity: 1;
+}
+
+.animate-repeat-course.ng-leave.ng-leave-active {
+    opacity: 0;
+}

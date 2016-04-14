@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('courseplannerApp')
-  .controller('SyllabusCtrl', function($scope, $state, SyllabusService, socket, Auth, syllabuses) {
+  .controller('SyllabusCtrl', function($scope, $state, $mdToast, SyllabusService, socket, Auth, syllabuses) {
     $scope.isAuthenticated = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.propToSortOn = 'title';
@@ -15,12 +15,12 @@ angular.module('courseplannerApp')
       $scope.totalSyllabuses = syllabuses.total;
       $scope.syllabuses = syllabuses.docs;
       $scope.currenPage = 1;
-      socket.syncUpdates('syllabus', $scope.syllabuses);
+      //socket.syncUpdates('syllabus', $scope.syllabuses);
     }
 
 
     function getResultsPage(pageNumber) {
-
+      if(!$scope.syllabuses){ return;}
       SyllabusService.paged(
         { page: pageNumber,
           limit: $scope.syllabusesPerPage,
@@ -75,8 +75,27 @@ angular.module('courseplannerApp')
     $scope.deleteSyllabus = function(syllabus) {
       SyllabusService.delete({
         id: syllabus._id
-      }, function(syllabus) {
-        console.log('Syllabus deleted', syllabus);
+      }, function() {
+        _.remove($scope.syllabuses, function(syl) {
+          return syl._id === syllabus._id;
+        });
+        SyllabusService.paged(
+          { page: $scope.currenPage,
+            limit: $scope.syllabusesPerPage,
+            sortBy: $scope.propToSortOn,
+            search: $scope.search.value },
+          function(syllabuses) {
+            $scope.totalSyllabuses = syllabuses.total;
+            var toast = $mdToast.simple()
+              .textContent('Syllabus Deleted')
+              .action('OK')
+              .highlightAction(true)
+              .position('left');
+            $mdToast.show(toast);
+
+            $scope.currenPage = $scope.currenPage;
+        });
+
       });
     };
 
@@ -88,7 +107,7 @@ angular.module('courseplannerApp')
     };
 
     $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('syllabus');
+      //socket.unsyncUpdates('syllabus');
     });
 
     initialSetup(syllabuses);

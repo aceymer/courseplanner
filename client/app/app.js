@@ -13,7 +13,8 @@ angular.module('courseplannerApp', [
   'validation.match',
   'ngMaterial',
   'ngMessages',
-  'angularUtils.directives.dirPagination'
+  'angularUtils.directives.dirPagination',
+  'ngAnimate'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

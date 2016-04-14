@@ -12,7 +12,7 @@ angular.module('courseplannerApp')
             return SyllabusService.paged(
               { page: 1,
                 limit: 25,
-                sortBy: 'title'});
+                sortBy: 'title'}).$promise;
           }
         }
       });
