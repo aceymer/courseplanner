@@ -5,6 +5,8 @@ import User from './user.model';
 import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
+var imageHelper = require('../../components/helper/imageHelper');
+var request = require('request');
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
@@ -80,10 +82,14 @@ export function create(req, res, next) {
   newUser.role = 'user';
   newUser.saveAsync()
     .spread(function(user) {
-      var token = jwt.sign({ _id: user._id }, config.secrets.session, {
+      var token = jwt.sign({
+        _id: user._id
+      }, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
-      res.json({ token });
+      res.json({
+        token
+      });
     })
     .catch(validationError(res));
 }
@@ -145,12 +151,26 @@ export function changePassword(req, res, next) {
 export function me(req, res, next) {
   var userId = req.user._id;
 
-  User.findOneAsync({ _id: userId }, '-salt -password')
+  User.findOneAsync({
+      _id: userId
+    }, '-salt -password')
     .then(user => { // don't ever give out the password or salt
       if (!user) {
         return res.status(401).end();
       }
-      res.json(user);
+
+      if (user.photo) {
+        request({url: user.photo, encoding: null}, function (error, response, body) {
+          if (!error && response.statusCode === 200) {
+            var prefix = 'data:' + response.headers['content-type'] + ';base64,';
+            var image = body.toString('base64');
+            user.photo = prefix + image;
+            res.json(user);
+          }
+        });
+      } else {
+        res.json(user);
+      }
     })
     .catch(err => next(err));
 }
@@ -160,4 +180,28 @@ export function me(req, res, next) {
  */
 export function authCallback(req, res, next) {
   res.redirect('/');
+}
+
+/**
+ * Updates user profile photo
+ */
+export function updateProfilePhoto(req, res) {
+  var userId = req.user._id;
+
+  User.findById(userId, function(err, user) {
+    if (user && req.body.photo) {
+      imageHelper.uploadBase64Image('./.tmp/' + userId + '_profile.jpg', req.body.photo, function(err, result) {
+        if (err) res.send(400, err);
+        else {
+          user.photo = String(result.url);
+          user.save(function(err) {
+            if (err) return validationError(res, err);
+            res.send(200);
+          });
+        }
+      });
+    } else {
+      res.send(400);
+    }
+  });
 }

@@ -13,8 +13,7 @@ angular.module('courseplannerApp')
     $scope.goToUser = function(user) {
 
       $state.go('userdetails', {
-        id: user._id,
-        name: user.name
+        id: user._id
       });
     };
 

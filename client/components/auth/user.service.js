@@ -20,6 +20,12 @@ function UserResource($resource) {
     },
     update: {
       method:'PUT'
+    },
+    updateProfilePhoto: {
+      method: 'PUT',
+      params: {
+        controller: 'profilePhoto'
+      }
     }
   });
 }

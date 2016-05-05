@@ -32,6 +32,13 @@ var all = {
     session: 'courseplanner-secret'
   },
 
+  // Secret for session, you will want to change this and make it an environment variable
+  cloudinary: {
+    cloudName: 'lbilde',
+    apiKey: '349344673856963',
+    apiSecret: '82W7HlDqKGayv-CPVSEtugRWBAU'
+  },
+
   // MongoDB connection options
   mongo: {
     options: {

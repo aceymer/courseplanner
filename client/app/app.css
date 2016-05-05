@@ -62,3 +62,52 @@ z-index: 10000;
 [ui-view].ng-leave-active {
   opacity: 0;
 }
+
+
+/**
+ * Upload
+ */
+
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 200px;
+    text-align: center;
+    padding: 25px;
+    margin: 10px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
+
+/**
+ * Image crop
+ */
+
+.drop-box-container {
+    height: 250px;
+    width: 250px;
+    margin: 0 auto;
+    display: table;
+}
+
+.photo-img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin: auto;
+  text-align: center;
+}
+
+.photo-shadow .photo-img, .photo-shadow-full .photo-img, .photo-shadow-full .photo-img-full, .photo-shadow-small .photo-img, .photo-shadow-small .photo-img-small {
+    margin: auto;
+    text-align: center;
+}
+
+md-toast.md-error-toast-theme div.md-toast-content{
+    color: white !important;
+    background-color: red !important;
+}

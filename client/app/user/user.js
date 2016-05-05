@@ -15,7 +15,7 @@ angular.module('courseplannerApp')
         }
       })
       .state('userdetails', {
-        url: '/user/:name',
+        url: '/user/:id',
         templateUrl: 'app/user/user-details.html',
         controller: 'UserDetailsCtrl'
       });

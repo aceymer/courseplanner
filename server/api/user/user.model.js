@@ -14,6 +14,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   }],
+  photo: String,
   password: String,
   provider: String,
   salt: String
@@ -24,7 +25,7 @@ var UserSchema = new Schema({
  */
 
 // Public profile information
-UserSchema
+UserSchema 
   .virtual('profile')
   .get(function() {
     return {

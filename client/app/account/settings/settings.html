@@ -1,53 +1,101 @@
 <navbar></navbar>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1>Change Password</h1>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
-
-        <div class="form-group">
-          <label>Current Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="vm.user.oldPassword"
-                 mongoose-error/>
-          <p class="help-block" ng-show="form.password.$error.mongoose">
-              {{ vm.errors.other }}
-          </p>
+<md-content class="md-padding" layout-xs="column" layout="row">
+  <div flex-xs flex-gt-xs="none" layout="column">
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Profil</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content layout="column" layout-align="center center" style="text-align:center;">
+        <div ng-show="!image.originalImage && !user.photo"
+             class="drop-box drop-box-container"
+             ngf-drag-over-class="drop-box-dragover"
+             ngf-change="readFileImg($files)"
+             ngf-drop ngf-select
+             ng-model="files"
+             ngf-multiple="false"
+             ngf-allow-dir="false"
+             accept="image/*" ng-cloak>
+          <span>Drop image or click to upload profile photo</span>
         </div>
-
-        <div class="form-group">
-          <label>New Password</label>
-
-          <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
-                 ng-minlength="3"
-                 required/>
-          <p class="help-block"
-             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || vm.submitted)">
-            Password must be at least 3 characters.
-          </p>
+        <!-- current user photo -->
+        <div class="photo-shadow" ng-show="user.photo" ng-cloak>
+          <img class="photo-img" data-ng-src="{{user.photo}}">
         </div>
-
-        <div class="form-group">
-          <label>Confirm New Password</label>
-
-          <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
-                 match="vm.user.newPassword"
-                 ng-minlength="3"
-                 required=""/>
-          <p class="help-block"
-             ng-show="form.confirmPassword.$error.match && vm.submitted">
-            Passwords must match.
-          </p>
-
+        <span class="">{{user.name}}</span>
+      <!--progress-->
+        <div class="drop-box-container" ng-show="loading" ng-cloak>
+          <div class="wrap">
+            <md-progress-circular class="md-hue-2" ng-show="loading"
+              md-mode="indeterminate" style="margin: auto;">
+            </md-progress-circular>
+          </div>
         </div>
-
-        <p class="help-block"> {{ vm.message }} </p>
-
-        <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
-      </form>
-    </div>
-  </div>
+        <!--Img Crop-->
+        <img-crop ng-show="image.originalImage && !loading && !user.photo"
+                  image="image.originalImage"
+                  result-image="image.croppedImage"
+                  area-type="circle" ngf-accept="'image/*'"
+                  result-image-size="250"
+                  change-on-fly="true"
+                  class="drop-box-container"
+                  ng-cloak>
+        </img-crop>
+        <!--Save-->
+        <md-button ng-show="image.originalImage && !loading && !user.photo"
+                    ng-disabled="loading" ng-click="upload()"
+                    class="md-raised submit-button md-accent button-center block"
+                    ng-cloak>Save Photo</md-button>
+        <!--Reset-->
+        <md-button ng-show="user.photo" ngf-select
+                   ngf-change="readFileImg($files)"
+                   ng-disabled="loading" ngf-multiple="false"
+                   ngf-allow-dir="false" accept="image/*"
+                   class="button-center block"
+                   ng-cloak>Change Photo
+        </md-button>
+      </div>
+    </md-card-content>
+  </md-card>
 </div>
+<div flex-xs flex-gt-xs layout="column">
+  <md-card flex-gt-xs="100">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Change Password</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content >
+      <div>
+        <form name="userForm">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Current password</label>
+            <input type="password" name="password" ng-model="user.oldPassword" mongoose-error/>
+            <p ng-show="form.password.$error.mongoose">
+              {{ errors.other }}
+            </p>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>New Password</label>
+            <input type="password" name="newPassword" ng-model="user.newPassword" ng-minlength="3" required/>
+            <p ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+              Password must be at least 3 characters.
+            </p>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Confirm New Password</label>
+            <input type="password" name="confirmPassword" ng-model="user.confirmPassword" match="user.newPassword" ng-minlength="3" required="" />
+            <p ng-show="form.confirmPassword.$error.match && submitted">
+              Passwords must match.
+            </p>
+          </md-input-container>
+          <p class="help-block"> {{ message }} </p>
+          <div layout="row" layout-align="end center">
+            <md-button type="submit" class="md-raised md-primary">Save changes</md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>

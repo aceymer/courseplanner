@@ -31,7 +31,6 @@ angular.module('courseplannerApp')
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsController',
-        controllerAs: 'vm',
         authenticate: true
       });
   })

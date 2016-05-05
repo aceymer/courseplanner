@@ -14,11 +14,13 @@ angular.module('courseplannerApp', [
   'ngMaterial',
   'ngMessages',
   'angularUtils.directives.dirPagination',
-  'ngAnimate'
+  'ngAnimate',
+  'ngFileUpload',
+  'ngImgCrop'
 ])
-  .config(function($urlRouterProvider, $locationProvider) {
+  .config(function($urlRouterProvider, $locationProvider, $mdThemingProvider) {
     $urlRouterProvider
       .otherwise('/');
-
+      $mdThemingProvider.theme('error-toast');
     $locationProvider.html5Mode(true);
   });

@@ -94,8 +94,9 @@ User.find({}).removeAsync()
         name: 'Test User',
         email: 'test@example.com',
         role: ['user'],
-        password: 'test'
-      }, {
+        password: 'test',
+        photo : 'http://res.cloudinary.com/lbilde/image/upload/v1462274560/hj4awuduonkaj9pm0mgw.png'
+    }, {
         _id: '569e69cc1ab998358d37667d',
         provider: 'local',
         role: ['admin', 'user', 'superAdmin'],
