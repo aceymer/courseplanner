@@ -15,6 +15,7 @@
             <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
         <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="user">User</a></li>
+        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="file">File</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

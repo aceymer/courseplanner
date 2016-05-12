@@ -35,8 +35,8 @@ var all = {
   // Secret for session, you will want to change this and make it an environment variable
   cloudinary: {
     cloudName: 'lbilde',
-    apiKey: '349344673856963',
-    apiSecret: '82W7HlDqKGayv-CPVSEtugRWBAU'
+    apiKey: '737247293166518',
+    apiSecret: 'HRu_UohF4wEbG9SfmLtFHM1Xx6M'
   },
 
   // MongoDB connection options
