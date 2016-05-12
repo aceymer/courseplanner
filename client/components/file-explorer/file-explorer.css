@@ -1,0 +1,11 @@
+.folders{
+  margin: 8px;
+}
+.fe-button{
+  padding:5px;
+  font-size: 1em;
+}
+
+.md-button.selected{
+  background: lightgrey;
+}

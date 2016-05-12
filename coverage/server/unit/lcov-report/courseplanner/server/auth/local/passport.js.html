@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for courseplanner/server/auth/local/passport.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">courseplanner/server/auth/local/</a> passport.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">47.62% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>10/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">28.57% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">45% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>9/20</span>
+      </div>
+      <div class='fl pad1y'>
+        <span class="strong">1 branch</span>
+        <span class="quiet">Ignored</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+exports.setup = setup;
+// istanbul ignore next
+&nbsp;
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? <span class="branch-0 cbranch-skip" title="branch not covered" >obj </span>: { 'default': obj }; }
+&nbsp;
+var _passport = require('passport');
+&nbsp;
+var _passport2 = _interopRequireDefault(_passport);
+&nbsp;
+var _passportLocal = require('passport-local');
+&nbsp;
+<span class="fstat-no" title="function not covered" >function localAuthenticate(User, email, password, done) {</span>
+<span class="cstat-no" title="statement not covered" >  User.findOneAsync({</span>
+    email: email.toLowerCase()
+  }).then(<span class="fstat-no" title="function not covered" >function (user) {</span>
+<span class="cstat-no" title="statement not covered" >    if (!user) {</span>
+<span class="cstat-no" title="statement not covered" >      return done(null, false, {</span>
+        message: 'This email is not registered.'
+      });
+    }
+<span class="cstat-no" title="statement not covered" >    user.authenticate(password, <span class="fstat-no" title="function not covered" >function (authError, authenticated) {</span></span>
+<span class="cstat-no" title="statement not covered" >      if (authError) {</span>
+<span class="cstat-no" title="statement not covered" >        return done(authError);</span>
+      }
+<span class="cstat-no" title="statement not covered" >      if (!authenticated) {</span>
+<span class="cstat-no" title="statement not covered" >        return done(null, false, { message: 'This password is not correct.' });</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        return done(null, user);</span>
+      }
+    });
+  })['catch'](<span class="fstat-no" title="function not covered" >function (err) {</span>
+<span class="cstat-no" title="statement not covered" >    return done(err);</span>
+  });
+}
+&nbsp;
+function setup(User, config) {
+  _passport2['default'].use(new _passportLocal.Strategy({
+    usernameField: 'email',
+    passwordField: 'password' // this is the virtual field on the model
+  }, <span class="fstat-no" title="function not covered" >function (email, password, done) {</span>
+<span class="cstat-no" title="statement not covered" >    return localAuthenticate(User, email, password, done);</span>
+  }));
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sYmlsZGUvRG9jdW1lbnRzL3dvcmsvY291cnNlcGxhbm5lci9zZXJ2ZXIvYXV0aC9sb2NhbC9wYXNzcG9ydC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O3dCQUFxQixVQUFVOzs7OzZCQUNTLGdCQUFnQjs7QUFFeEQsU0FBUyxpQkFBaUIsQ0FBQyxJQUFJLEVBQUUsS0FBSyxFQUFFLFFBQVEsRUFBRSxJQUFJLEVBQUU7QUFDdEQsTUFBSSxDQUFDLFlBQVksQ0FBQztBQUNoQixTQUFLLEVBQUUsS0FBSyxDQUFDLFdBQVcsRUFBRTtHQUMzQixDQUFDLENBQ0MsSUFBSSxDQUFDLFVBQUEsSUFBSSxFQUFJO0FBQ1osUUFBSSxDQUFDLElBQUksRUFBRTtBQUNULGFBQU8sSUFBSSxDQUFDLElBQUksRUFBRSxLQUFLLEVBQUU7QUFDdkIsZUFBTyxFQUFFLCtCQUErQjtPQUN6QyxDQUFDLENBQUM7S0FDSjtBQUNELFFBQUksQ0FBQyxZQUFZLENBQUMsUUFBUSxFQUFFLFVBQVMsU0FBUyxFQUFFLGFBQWEsRUFBRTtBQUM3RCxVQUFJLFNBQVMsRUFBRTtBQUNiLGVBQU8sSUFBSSxDQUFDLFNBQVMsQ0FBQyxDQUFDO09BQ3hCO0FBQ0QsVUFBSSxDQUFDLGFBQWEsRUFBRTtBQUNsQixlQUFPLElBQUksQ0FBQyxJQUFJLEVBQUUsS0FBSyxFQUFFLEVBQUUsT0FBTyxFQUFFLCtCQUErQixFQUFFLENBQUMsQ0FBQztPQUN4RSxNQUFNO0FBQ0wsZUFBTyxJQUFJLENBQUMsSUFBSSxFQUFFLElBQUksQ0FBQyxDQUFDO09BQ3pCO0tBQ0YsQ0FBQyxDQUFDO0dBQ0osQ0FBQyxTQUNJLENBQUMsVUFBQSxHQUFHO1dBQUksSUFBSSxDQUFDLEdBQUcsQ0FBQztHQUFBLENBQUMsQ0FBQztDQUM1Qjs7QUFFTSxTQUFTLEtBQUssQ0FBQyxJQUFJLEVBQUUsTUFBTSxFQUFFO0FBQ2xDLHdCQUFTLEdBQUcsQ0FBQyw0QkFBa0I7QUFDN0IsaUJBQWEsRUFBRSxPQUFPO0FBQ3RCLGlCQUFhLEVBQUUsVUFBVTtHQUMxQixFQUFFLFVBQVMsS0FBSyxFQUFFLFFBQVEsRUFBRSxJQUFJLEVBQUU7QUFDakMsV0FBTyxpQkFBaUIsQ0FBQyxJQUFJLEVBQUUsS0FBSyxFQUFFLFFBQVEsRUFBRSxJQUFJLENBQUMsQ0FBQztHQUN2RCxDQUFDLENBQUMsQ0FBQztDQUNMIiwiZmlsZSI6Ii9Vc2Vycy9sYmlsZGUvRG9jdW1lbnRzL3dvcmsvY291cnNlcGxhbm5lci9zZXJ2ZXIvYXV0aC9sb2NhbC9wYXNzcG9ydC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBwYXNzcG9ydCBmcm9tICdwYXNzcG9ydCc7XG5pbXBvcnQge1N0cmF0ZWd5IGFzIExvY2FsU3RyYXRlZ3l9IGZyb20gJ3Bhc3Nwb3J0LWxvY2FsJztcblxuZnVuY3Rpb24gbG9jYWxBdXRoZW50aWNhdGUoVXNlciwgZW1haWwsIHBhc3N3b3JkLCBkb25lKSB7XG4gIFVzZXIuZmluZE9uZUFzeW5jKHtcbiAgICBlbWFpbDogZW1haWwudG9Mb3dlckNhc2UoKVxuICB9KVxuICAgIC50aGVuKHVzZXIgPT4ge1xuICAgICAgaWYgKCF1c2VyKSB7XG4gICAgICAgIHJldHVybiBkb25lKG51bGwsIGZhbHNlLCB7XG4gICAgICAgICAgbWVzc2FnZTogJ1RoaXMgZW1haWwgaXMgbm90IHJlZ2lzdGVyZWQuJ1xuICAgICAgICB9KTtcbiAgICAgIH1cbiAgICAgIHVzZXIuYXV0aGVudGljYXRlKHBhc3N3b3JkLCBmdW5jdGlvbihhdXRoRXJyb3IsIGF1dGhlbnRpY2F0ZWQpIHtcbiAgICAgICAgaWYgKGF1dGhFcnJvcikge1xuICAgICAgICAgIHJldHVybiBkb25lKGF1dGhFcnJvcik7XG4gICAgICAgIH1cbiAgICAgICAgaWYgKCFhdXRoZW50aWNhdGVkKSB7XG4gICAgICAgICAgcmV0dXJuIGRvbmUobnVsbCwgZmFsc2UsIHsgbWVzc2FnZTogJ1RoaXMgcGFzc3dvcmQgaXMgbm90IGNvcnJlY3QuJyB9KTtcbiAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICByZXR1cm4gZG9uZShudWxsLCB1c2VyKTtcbiAgICAgICAgfVxuICAgICAgfSk7XG4gICAgfSlcbiAgICAuY2F0Y2goZXJyID0+IGRvbmUoZXJyKSk7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBzZXR1cChVc2VyLCBjb25maWcpIHtcbiAgcGFzc3BvcnQudXNlKG5ldyBMb2NhbFN0cmF0ZWd5KHtcbiAgICB1c2VybmFtZUZpZWxkOiAnZW1haWwnLFxuICAgIHBhc3N3b3JkRmllbGQ6ICdwYXNzd29yZCcgLy8gdGhpcyBpcyB0aGUgdmlydHVhbCBmaWVsZCBvbiB0aGUgbW9kZWxcbiAgfSwgZnVuY3Rpb24oZW1haWwsIHBhc3N3b3JkLCBkb25lKSB7XG4gICAgcmV0dXJuIGxvY2FsQXV0aGVudGljYXRlKFVzZXIsIGVtYWlsLCBwYXNzd29yZCwgZG9uZSk7XG4gIH0pKTtcbn1cbiJdfQ==</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 12 2016 20:05:30 GMT+0200 (CEST)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

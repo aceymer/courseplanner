@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for courseplanner/server/routes.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">courseplanner/server/</a> routes.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.33% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>14/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">66.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/3</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92.86% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/14</span>
+      </div>
+      <div class='fl pad1y'>
+        <span class="strong">1 branch</span>
+        <span class="quiet">Ignored</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Main application routes
+ */
+&nbsp;
+'use strict';
+&nbsp;
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+// istanbul ignore next
+&nbsp;
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? <span class="branch-0 cbranch-skip" title="branch not covered" >obj </span>: { 'default': obj }; }
+&nbsp;
+var _componentsErrors = require('./components/errors');
+&nbsp;
+var _componentsErrors2 = _interopRequireDefault(_componentsErrors);
+&nbsp;
+var _path = require('path');
+&nbsp;
+var _path2 = _interopRequireDefault(_path);
+&nbsp;
+exports['default'] = function (app) {
+  // Insert routes below
+  app.use('/api/syllabuses', require('./api/syllabus'));
+  app.use('/api/users', require('./api/user'));
+&nbsp;
+  app.use('/auth', require('./auth'));
+&nbsp;
+  // All undefined asset or api routes should return a 404
+  app.route('/:url(api|auth|components|app|bower_components|assets)/*').get(_componentsErrors2['default'][404]);
+&nbsp;
+  // All other routes should redirect to the index.html
+  app.route('/*').get(<span class="fstat-no" title="function not covered" >function (req, res) {</span>
+<span class="cstat-no" title="statement not covered" >    res.sendFile(_path2['default'].resolve(app.get('appPath') + '/index.html'));</span>
+  });
+};
+&nbsp;
+module.exports = exports['default'];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sYmlsZGUvRG9jdW1lbnRzL3dvcmsvY291cnNlcGxhbm5lci9zZXJ2ZXIvcm91dGVzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFJQSxZQUFZLENBQUM7Ozs7Ozs7OztnQ0FFTSxxQkFBcUI7Ozs7b0JBQ3ZCLE1BQU07Ozs7cUJBRVIsVUFBUyxHQUFHLEVBQUU7O0FBRTNCLEtBQUcsQ0FBQyxHQUFHLENBQUMsaUJBQWlCLEVBQUUsT0FBTyxDQUFDLGdCQUFnQixDQUFDLENBQUMsQ0FBQztBQUN0RCxLQUFHLENBQUMsR0FBRyxDQUFDLFlBQVksRUFBRSxPQUFPLENBQUMsWUFBWSxDQUFDLENBQUMsQ0FBQzs7QUFFN0MsS0FBRyxDQUFDLEdBQUcsQ0FBQyxPQUFPLEVBQUUsT0FBTyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUM7OztBQUdwQyxLQUFHLENBQUMsS0FBSyxDQUFDLDBEQUEwRCxDQUFDLENBQ25FLEdBQUcsQ0FBQyw4QkFBTyxHQUFHLENBQUMsQ0FBQyxDQUFDOzs7QUFHbkIsS0FBRyxDQUFDLEtBQUssQ0FBQyxJQUFJLENBQUMsQ0FDWixHQUFHLENBQUMsVUFBQyxHQUFHLEVBQUUsR0FBRyxFQUFLO0FBQ2pCLE9BQUcsQ0FBQyxRQUFRLENBQUMsa0JBQUssT0FBTyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsU0FBUyxDQUFDLEdBQUcsYUFBYSxDQUFDLENBQUMsQ0FBQztHQUNoRSxDQUFDLENBQUM7Q0FDTiIsImZpbGUiOiIvVXNlcnMvbGJpbGRlL0RvY3VtZW50cy93b3JrL2NvdXJzZXBsYW5uZXIvc2VydmVyL3JvdXRlcy5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogTWFpbiBhcHBsaWNhdGlvbiByb3V0ZXNcbiAqL1xuXG4ndXNlIHN0cmljdCc7XG5cbmltcG9ydCBlcnJvcnMgZnJvbSAnLi9jb21wb25lbnRzL2Vycm9ycyc7XG5pbXBvcnQgcGF0aCBmcm9tICdwYXRoJztcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24oYXBwKSB7XG4gIC8vIEluc2VydCByb3V0ZXMgYmVsb3dcbiAgYXBwLnVzZSgnL2FwaS9zeWxsYWJ1c2VzJywgcmVxdWlyZSgnLi9hcGkvc3lsbGFidXMnKSk7XG4gIGFwcC51c2UoJy9hcGkvdXNlcnMnLCByZXF1aXJlKCcuL2FwaS91c2VyJykpO1xuXG4gIGFwcC51c2UoJy9hdXRoJywgcmVxdWlyZSgnLi9hdXRoJykpO1xuXG4gIC8vIEFsbCB1bmRlZmluZWQgYXNzZXQgb3IgYXBpIHJvdXRlcyBzaG91bGQgcmV0dXJuIGEgNDA0XG4gIGFwcC5yb3V0ZSgnLzp1cmwoYXBpfGF1dGh8Y29tcG9uZW50c3xhcHB8Ym93ZXJfY29tcG9uZW50c3xhc3NldHMpLyonKVxuICAgLmdldChlcnJvcnNbNDA0XSk7XG5cbiAgLy8gQWxsIG90aGVyIHJvdXRlcyBzaG91bGQgcmVkaXJlY3QgdG8gdGhlIGluZGV4Lmh0bWxcbiAgYXBwLnJvdXRlKCcvKicpXG4gICAgLmdldCgocmVxLCByZXMpID0+IHtcbiAgICAgIHJlcy5zZW5kRmlsZShwYXRoLnJlc29sdmUoYXBwLmdldCgnYXBwUGF0aCcpICsgJy9pbmRleC5odG1sJykpO1xuICAgIH0pO1xufVxuIl19</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 12 2016 20:05:30 GMT+0200 (CEST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

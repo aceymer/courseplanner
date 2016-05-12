@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for courseplanner/server/components/errors/index.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">courseplanner/server/components/errors/</a> index.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">11.11% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">11.11% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/9</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Error responses
+ */
+&nbsp;
+'use strict';
+&nbsp;
+module.exports[404] = <span class="fstat-no" title="function not covered" >function pageNotFound(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >  var viewFilePath = '404';</span>
+<span class="cstat-no" title="statement not covered" >  var statusCode = 404;</span>
+<span class="cstat-no" title="statement not covered" >  var result = {</span>
+    status: statusCode
+  };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  res.status(result.status);</span>
+<span class="cstat-no" title="statement not covered" >  res.render(viewFilePath, {}, <span class="fstat-no" title="function not covered" >function (err, html) {</span></span>
+<span class="cstat-no" title="statement not covered" >    if (err) {</span>
+<span class="cstat-no" title="statement not covered" >      return res.json(result, result.status);</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    res.send(html);</span>
+  });
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sYmlsZGUvRG9jdW1lbnRzL3dvcmsvY291cnNlcGxhbm5lci9zZXJ2ZXIvY29tcG9uZW50cy9lcnJvcnMvaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUlBLFlBQVksQ0FBQzs7QUFFYixNQUFNLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxHQUFHLFNBQVMsWUFBWSxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUU7QUFDcEQsTUFBSSxZQUFZLEdBQUcsS0FBSyxDQUFDO0FBQ3pCLE1BQUksVUFBVSxHQUFHLEdBQUcsQ0FBQztBQUNyQixNQUFJLE1BQU0sR0FBRztBQUNYLFVBQU0sRUFBRSxVQUFVO0dBQ25CLENBQUM7O0FBRUYsS0FBRyxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLENBQUM7QUFDMUIsS0FBRyxDQUFDLE1BQU0sQ0FBQyxZQUFZLEVBQUUsRUFBRSxFQUFFLFVBQVMsR0FBRyxFQUFFLElBQUksRUFBRTtBQUMvQyxRQUFJLEdBQUcsRUFBRTtBQUNQLGFBQU8sR0FBRyxDQUFDLElBQUksQ0FBQyxNQUFNLEVBQUUsTUFBTSxDQUFDLE1BQU0sQ0FBQyxDQUFDO0tBQ3hDOztBQUVELE9BQUcsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDaEIsQ0FBQyxDQUFDO0NBQ0osQ0FBQyIsImZpbGUiOiIvVXNlcnMvbGJpbGRlL0RvY3VtZW50cy93b3JrL2NvdXJzZXBsYW5uZXIvc2VydmVyL2NvbXBvbmVudHMvZXJyb3JzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBFcnJvciByZXNwb25zZXNcbiAqL1xuXG4ndXNlIHN0cmljdCc7XG5cbm1vZHVsZS5leHBvcnRzWzQwNF0gPSBmdW5jdGlvbiBwYWdlTm90Rm91bmQocmVxLCByZXMpIHtcbiAgdmFyIHZpZXdGaWxlUGF0aCA9ICc0MDQnO1xuICB2YXIgc3RhdHVzQ29kZSA9IDQwNDtcbiAgdmFyIHJlc3VsdCA9IHtcbiAgICBzdGF0dXM6IHN0YXR1c0NvZGVcbiAgfTtcblxuICByZXMuc3RhdHVzKHJlc3VsdC5zdGF0dXMpO1xuICByZXMucmVuZGVyKHZpZXdGaWxlUGF0aCwge30sIGZ1bmN0aW9uKGVyciwgaHRtbCkge1xuICAgIGlmIChlcnIpIHtcbiAgICAgIHJldHVybiByZXMuanNvbihyZXN1bHQsIHJlc3VsdC5zdGF0dXMpO1xuICAgIH1cblxuICAgIHJlcy5zZW5kKGh0bWwpO1xuICB9KTtcbn07XG4iXX0=</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 12 2016 20:05:30 GMT+0200 (CEST)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

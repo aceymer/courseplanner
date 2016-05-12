@@ -1,0 +1,18 @@
+.folder {
+    padding: 8px 5px;
+    width: 250px;
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.texti{
+  text-overflow: ellipsis;
+}
+
+.folder-icon{
+  font-size: 2em;
+  vertical-align:middle;
+  margin-right:5px;
+}

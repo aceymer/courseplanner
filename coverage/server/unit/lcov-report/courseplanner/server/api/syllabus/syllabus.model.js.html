@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for courseplanner/server/api/syllabus/syllabus.model.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">courseplanner/server/api/syllabus/</a> syllabus.model.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>6/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>6/6</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var mongoose = require('bluebird').promisifyAll(require('mongoose')),
+    Schema = mongoose.Schema,
+    paginator = require('mongoose-paginate');
+&nbsp;
+var SyllabusSchema = new mongoose.Schema({
+  academy: String,
+  year: Number,
+  title: String,
+  education: String,
+  lecturer: String,
+  owner: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
+  objectives: String,
+  iconurl: String,
+  weekplans: [{
+    week: Number,
+    summary: String,
+    topics: String,
+    literature: String,
+    videos: String,
+    assignments: String,
+    teaser: String
+  }]
+});
+&nbsp;
+SyllabusSchema.plugin(paginator);
+&nbsp;
+exports['default'] = mongoose.model('Syllabus', SyllabusSchema);
+module.exports = exports['default'];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sYmlsZGUvRG9jdW1lbnRzL3dvcmsvY291cnNlcGxhbm5lci9zZXJ2ZXIvYXBpL3N5bGxhYnVzL3N5bGxhYnVzLm1vZGVsLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLFlBQVksQ0FBQzs7Ozs7QUFFYixJQUFJLFFBQVEsR0FBRyxPQUFPLENBQUMsVUFBVSxDQUFDLENBQUMsWUFBWSxDQUFDLE9BQU8sQ0FBQyxVQUFVLENBQUMsQ0FBQztJQUNoRSxNQUFNLEdBQUcsUUFBUSxDQUFDLE1BQU07SUFDeEIsU0FBUyxHQUFHLE9BQU8sQ0FBQyxtQkFBbUIsQ0FBQyxDQUFDOztBQUU3QyxJQUFJLGNBQWMsR0FBRyxJQUFJLFFBQVEsQ0FBQyxNQUFNLENBQUM7QUFDdkMsU0FBTyxFQUFFLE1BQU07QUFDZixNQUFJLEVBQUUsTUFBTTtBQUNaLE9BQUssRUFBRSxNQUFNO0FBQ2IsV0FBUyxFQUFFLE1BQU07QUFDakIsVUFBUSxFQUFFLE1BQU07QUFDaEIsT0FBSyxFQUFFO0FBQ0wsUUFBSSxFQUFFLE1BQU0sQ0FBQyxRQUFRO0FBQ3JCLE9BQUcsRUFBRSxNQUFNO0dBQ1o7QUFDRCxZQUFVLEVBQUUsTUFBTTtBQUNsQixTQUFPLEVBQUUsTUFBTTtBQUNmLFdBQVMsRUFBRSxDQUFDO0FBQ1YsUUFBSSxFQUFFLE1BQU07QUFDWixXQUFPLEVBQUUsTUFBTTtBQUNmLFVBQU0sRUFBRSxNQUFNO0FBQ2QsY0FBVSxFQUFFLE1BQU07QUFDbEIsVUFBTSxFQUFFLE1BQU07QUFDZCxlQUFXLEVBQUUsTUFBTTtBQUNuQixVQUFNLEVBQUUsTUFBTTtHQUNmLENBQUM7Q0FDSCxDQUFDLENBQUM7O0FBRUgsY0FBYyxDQUFDLE1BQU0sQ0FBQyxTQUFTLENBQUMsQ0FBQzs7cUJBRWxCLFFBQVEsQ0FBQyxLQUFLLENBQUMsVUFBVSxFQUFFLGNBQWMsQ0FBQyIsImZpbGUiOiIvVXNlcnMvbGJpbGRlL0RvY3VtZW50cy93b3JrL2NvdXJzZXBsYW5uZXIvc2VydmVyL2FwaS9zeWxsYWJ1cy9zeWxsYWJ1cy5tb2RlbC5qcyIsInNvdXJjZXNDb250ZW50IjpbIid1c2Ugc3RyaWN0JztcblxudmFyIG1vbmdvb3NlID0gcmVxdWlyZSgnYmx1ZWJpcmQnKS5wcm9taXNpZnlBbGwocmVxdWlyZSgnbW9uZ29vc2UnKSksXG4gICAgU2NoZW1hID0gbW9uZ29vc2UuU2NoZW1hLFxuICAgIHBhZ2luYXRvciA9IHJlcXVpcmUoJ21vbmdvb3NlLXBhZ2luYXRlJyk7XG5cbnZhciBTeWxsYWJ1c1NjaGVtYSA9IG5ldyBtb25nb29zZS5TY2hlbWEoe1xuICBhY2FkZW15OiBTdHJpbmcsXG4gIHllYXI6IE51bWJlcixcbiAgdGl0bGU6IFN0cmluZyxcbiAgZWR1Y2F0aW9uOiBTdHJpbmcsXG4gIGxlY3R1cmVyOiBTdHJpbmcsXG4gIG93bmVyOiB7XG4gICAgdHlwZTogU2NoZW1hLk9iamVjdElkLFxuICAgIHJlZjogJ1VzZXInXG4gIH0sXG4gIG9iamVjdGl2ZXM6IFN0cmluZyxcbiAgaWNvbnVybDogU3RyaW5nLFxuICB3ZWVrcGxhbnM6IFt7XG4gICAgd2VlazogTnVtYmVyLFxuICAgIHN1bW1hcnk6IFN0cmluZyxcbiAgICB0b3BpY3M6IFN0cmluZyxcbiAgICBsaXRlcmF0dXJlOiBTdHJpbmcsXG4gICAgdmlkZW9zOiBTdHJpbmcsXG4gICAgYXNzaWdubWVudHM6IFN0cmluZyxcbiAgICB0ZWFzZXI6IFN0cmluZ1xuICB9XVxufSk7XG5cblN5bGxhYnVzU2NoZW1hLnBsdWdpbihwYWdpbmF0b3IpO1xuXG5leHBvcnQgZGVmYXVsdCBtb25nb29zZS5tb2RlbCgnU3lsbGFidXMnLCBTeWxsYWJ1c1NjaGVtYSk7XG4iXX0=</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 12 2016 20:05:30 GMT+0200 (CEST)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+.file {
+    width: 248px;
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.file-name{
+  background: transparent;
+  padding: 5px;
+  border-top: 1px solid rgba(0,0,0,.12);
+  width: 100%;
+  text-align: center;
+}
+
+.info{
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 100%;
+
+}
+
+.file-type{
+  font-size: 2em;
+  padding:5px;
+}

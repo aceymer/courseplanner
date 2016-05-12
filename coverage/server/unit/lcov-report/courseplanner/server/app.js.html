@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for courseplanner/server/app.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">courseplanner/server/</a> app.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">89.29% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>25/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>5/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">88.89% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>24/27</span>
+      </div>
+      <div class='fl pad1y'>
+        <span class="strong">1 branch</span>
+        <span class="quiet">Ignored</span>  &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Main application file
+ */
+&nbsp;
+'use strict';
+&nbsp;
+// istanbul ignore next
+&nbsp;
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? <span class="branch-0 cbranch-skip" title="branch not covered" >obj </span>: { 'default': obj }; }
+&nbsp;
+var _express = require('express');
+&nbsp;
+var _express2 = _interopRequireDefault(_express);
+&nbsp;
+var _mongoose = require('mongoose');
+&nbsp;
+var _mongoose2 = _interopRequireDefault(_mongoose);
+&nbsp;
+var _configEnvironment = require('./config/environment');
+&nbsp;
+var _configEnvironment2 = _interopRequireDefault(_configEnvironment);
+&nbsp;
+var _http = require('http');
+&nbsp;
+var _http2 = _interopRequireDefault(_http);
+&nbsp;
+// Connect to MongoDB
+&nbsp;
+_mongoose2['default'].Promise = require('bluebird');
+_mongoose2['default'].connect(_configEnvironment2['default'].mongo.uri, _configEnvironment2['default'].mongo.options);
+_mongoose2['default'].connection.on('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
+<span class="cstat-no" title="statement not covered" >  console.error('MongoDB connection error: ' + err);</span>
+<span class="cstat-no" title="statement not covered" >  process.exit(-1);</span>
+});
+&nbsp;
+// Populate databases with sample data
+<span class="missing-if-branch" title="if path not taken" >I</span>if (_configEnvironment2['default'].seedDB) {
+<span class="cstat-no" title="statement not covered" >  require('./config/seed');</span>
+}
+&nbsp;
+// Setup server
+var app = (0, _express2['default'])();
+var server = _http2['default'].createServer(app);
+var socketio = require('socket.io')(server, {
+  serveClient: _configEnvironment2['default'].env !== 'production',
+  path: '/socket.io-client'
+});
+require('./config/socketio')(socketio);
+require('./config/express')(app);
+require('./routes')(app);
+&nbsp;
+// Start server
+function startServer() {
+  server.listen(_configEnvironment2['default'].port, _configEnvironment2['default'].ip, function () {
+    console.log('Express server listening on %d, in %s mode', _configEnvironment2['default'].port, app.get('env'));
+  });
+}
+&nbsp;
+setImmediate(startServer);
+&nbsp;
+// Expose app
+exports = module.exports = app;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sYmlsZGUvRG9jdW1lbnRzL3dvcmsvY291cnNlcGxhbm5lci9zZXJ2ZXIvYXBwLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFJQSxZQUFZLENBQUM7Ozs7Ozt1QkFFTyxTQUFTOzs7O3dCQUNSLFVBQVU7Ozs7aUNBRVosc0JBQXNCOzs7O29CQUN4QixNQUFNOzs7Ozs7QUFGdkIsc0JBQVMsT0FBTyxHQUFHLE9BQU8sQ0FBQyxVQUFVLENBQUMsQ0FBQztBQUt2QyxzQkFBUyxPQUFPLENBQUMsK0JBQU8sS0FBSyxDQUFDLEdBQUcsRUFBRSwrQkFBTyxLQUFLLENBQUMsT0FBTyxDQUFDLENBQUM7QUFDekQsc0JBQVMsVUFBVSxDQUFDLEVBQUUsQ0FBQyxPQUFPLEVBQUUsVUFBUyxHQUFHLEVBQUU7QUFDNUMsU0FBTyxDQUFDLEtBQUssQ0FBQyw0QkFBNEIsR0FBRyxHQUFHLENBQUMsQ0FBQztBQUNsRCxTQUFPLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUM7Q0FDbEIsQ0FBQyxDQUFDOzs7QUFHSCxJQUFJLCtCQUFPLE1BQU0sRUFBRTtBQUFFLFNBQU8sQ0FBQyxlQUFlLENBQUMsQ0FBQztDQUFFOzs7QUFHaEQsSUFBSSxHQUFHLEdBQUcsMkJBQVMsQ0FBQztBQUNwQixJQUFJLE1BQU0sR0FBRyxrQkFBSyxZQUFZLENBQUMsR0FBRyxDQUFDLENBQUM7QUFDcEMsSUFBSSxRQUFRLEdBQUcsT0FBTyxDQUFDLFdBQVcsQ0FBQyxDQUFDLE1BQU0sRUFBRTtBQUMxQyxhQUFXLEVBQUUsK0JBQU8sR0FBRyxLQUFLLFlBQVk7QUFDeEMsTUFBSSxFQUFFLG1CQUFtQjtDQUMxQixDQUFDLENBQUM7QUFDSCxPQUFPLENBQUMsbUJBQW1CLENBQUMsQ0FBQyxRQUFRLENBQUMsQ0FBQztBQUN2QyxPQUFPLENBQUMsa0JBQWtCLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQztBQUNqQyxPQUFPLENBQUMsVUFBVSxDQUFDLENBQUMsR0FBRyxDQUFDLENBQUM7OztBQUd6QixTQUFTLFdBQVcsR0FBRztBQUNyQixRQUFNLENBQUMsTUFBTSxDQUFDLCtCQUFPLElBQUksRUFBRSwrQkFBTyxFQUFFLEVBQUUsWUFBVztBQUMvQyxXQUFPLENBQUMsR0FBRyxDQUFDLDRDQUE0QyxFQUFFLCtCQUFPLElBQUksRUFBRSxHQUFHLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUM7R0FDeEYsQ0FBQyxDQUFDO0NBQ0o7O0FBRUQsWUFBWSxDQUFDLFdBQVcsQ0FBQyxDQUFDOzs7QUFHMUIsT0FBTyxHQUFHLE1BQU0sQ0FBQyxPQUFPLEdBQUcsR0FBRyxDQUFDIiwiZmlsZSI6Ii9Vc2Vycy9sYmlsZGUvRG9jdW1lbnRzL3dvcmsvY291cnNlcGxhbm5lci9zZXJ2ZXIvYXBwLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBNYWluIGFwcGxpY2F0aW9uIGZpbGVcbiAqL1xuXG4ndXNlIHN0cmljdCc7XG5cbmltcG9ydCBleHByZXNzIGZyb20gJ2V4cHJlc3MnO1xuaW1wb3J0IG1vbmdvb3NlIGZyb20gJ21vbmdvb3NlJztcbm1vbmdvb3NlLlByb21pc2UgPSByZXF1aXJlKCdibHVlYmlyZCcpO1xuaW1wb3J0IGNvbmZpZyBmcm9tICcuL2NvbmZpZy9lbnZpcm9ubWVudCc7XG5pbXBvcnQgaHR0cCBmcm9tICdodHRwJztcblxuLy8gQ29ubmVjdCB0byBNb25nb0RCXG5tb25nb29zZS5jb25uZWN0KGNvbmZpZy5tb25nby51cmksIGNvbmZpZy5tb25nby5vcHRpb25zKTtcbm1vbmdvb3NlLmNvbm5lY3Rpb24ub24oJ2Vycm9yJywgZnVuY3Rpb24oZXJyKSB7XG4gIGNvbnNvbGUuZXJyb3IoJ01vbmdvREIgY29ubmVjdGlvbiBlcnJvcjogJyArIGVycik7XG4gIHByb2Nlc3MuZXhpdCgtMSk7XG59KTtcblxuLy8gUG9wdWxhdGUgZGF0YWJhc2VzIHdpdGggc2FtcGxlIGRhdGFcbmlmIChjb25maWcuc2VlZERCKSB7IHJlcXVpcmUoJy4vY29uZmlnL3NlZWQnKTsgfVxuXG4vLyBTZXR1cCBzZXJ2ZXJcbnZhciBhcHAgPSBleHByZXNzKCk7XG52YXIgc2VydmVyID0gaHR0cC5jcmVhdGVTZXJ2ZXIoYXBwKTtcbnZhciBzb2NrZXRpbyA9IHJlcXVpcmUoJ3NvY2tldC5pbycpKHNlcnZlciwge1xuICBzZXJ2ZUNsaWVudDogY29uZmlnLmVudiAhPT0gJ3Byb2R1Y3Rpb24nLFxuICBwYXRoOiAnL3NvY2tldC5pby1jbGllbnQnXG59KTtcbnJlcXVpcmUoJy4vY29uZmlnL3NvY2tldGlvJykoc29ja2V0aW8pO1xucmVxdWlyZSgnLi9jb25maWcvZXhwcmVzcycpKGFwcCk7XG5yZXF1aXJlKCcuL3JvdXRlcycpKGFwcCk7XG5cbi8vIFN0YXJ0IHNlcnZlclxuZnVuY3Rpb24gc3RhcnRTZXJ2ZXIoKSB7XG4gIHNlcnZlci5saXN0ZW4oY29uZmlnLnBvcnQsIGNvbmZpZy5pcCwgZnVuY3Rpb24oKSB7XG4gICAgY29uc29sZS5sb2coJ0V4cHJlc3Mgc2VydmVyIGxpc3RlbmluZyBvbiAlZCwgaW4gJXMgbW9kZScsIGNvbmZpZy5wb3J0LCBhcHAuZ2V0KCdlbnYnKSk7XG4gIH0pO1xufVxuXG5zZXRJbW1lZGlhdGUoc3RhcnRTZXJ2ZXIpO1xuXG4vLyBFeHBvc2UgYXBwXG5leHBvcnRzID0gbW9kdWxlLmV4cG9ydHMgPSBhcHA7XG4iXX0=</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 12 2016 20:05:30 GMT+0200 (CEST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
