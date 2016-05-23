@@ -9,10 +9,10 @@ function ExplorerFolderController() {
 
   ctrl.open = function(){
     ctrl.onOpen(ctrl.folder);
-  }
+  };
 }
 
-angular.module('courseplannerApp').component('explorerFolder', {
+angular.module('fileExplorer').component('explorerFolder', {
   templateUrl: 'components/file-explorer/file-explorer-folder.html',
   controller: ExplorerFolderController,
   bindings: {

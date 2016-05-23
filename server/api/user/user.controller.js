@@ -151,9 +151,11 @@ export function changePassword(req, res, next) {
 export function me(req, res, next) {
   var userId = req.user._id;
 
-  User.findOneAsync({
+  User.findOne({
       _id: userId
     }, '-salt -password')
+    .deepPopulate('rootFolder rootFolder.folders')
+    .execAsync()
     .then(user => { // don't ever give out the password or salt
       if (!user) {
         return res.status(401).end();

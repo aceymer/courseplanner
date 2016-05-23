@@ -3,7 +3,6 @@
 import crypto from 'crypto';
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 import {Schema} from 'mongoose';
-
 var UserSchema = new Schema({
   name: String,
   email: {
@@ -15,6 +14,10 @@ var UserSchema = new Schema({
     default: 'user'
   }],
   photo: String,
+  rootFolder: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Folder'
+  },
   password: String,
   provider: String,
   salt: String
@@ -25,7 +28,7 @@ var UserSchema = new Schema({
  */
 
 // Public profile information
-UserSchema 
+UserSchema
   .virtual('profile')
   .get(function() {
     return {
@@ -214,5 +217,9 @@ UserSchema.methods = {
     });
   }
 };
+
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
+UserSchema.plugin(deepPopulate);
+
 
 export default mongoose.model('User', UserSchema);

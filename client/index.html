@@ -29,6 +29,7 @@
       <link rel="stylesheet" href="app/user/user-details.css">
       <link rel="stylesheet" href="app/user/user.css">
       <link rel="stylesheet" href="app/week/week.css">
+      <link rel="stylesheet" href="components/file-explorer/file-explorer-breadcrumb.css">
       <link rel="stylesheet" href="components/file-explorer/file-explorer-file.css">
       <link rel="stylesheet" href="components/file-explorer/file-explorer-folder.css">
       <link rel="stylesheet" href="components/file-explorer/file-explorer.css">
@@ -79,22 +80,25 @@
       <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
       <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
       <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+      <script src="bower_components/angular-base64/angular-base64.js"></script>
+      <script src="bower_components/angular-lz-string/angular-lz-string.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
-      <script src="app/admin/admin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
+      <script src="app/admin/admin.module.js"></script>
+      <script src="components/file-explorer/file-explorer.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/week/week.js"></script>
       <script src="app/admin/admin.controller.js"></script>
       <script src="app/account/account.js"></script>
       <script src="app/admin/admin.router.js"></script>
       <script src="app/app.constant.js"></script>
       <script src="app/file/file.controller.js"></script>
       <script src="app/file/file.js"></script>
+      <script src="app/file/file.service.js"></script>
       <script src="app/syllabus/syllabus.controller.js"></script>
       <script src="app/syllabus/syllabus.js"></script>
       <script src="app/syllabus/syllabus.service.js"></script>
@@ -102,15 +106,18 @@
       <script src="app/user/user.controller.js"></script>
       <script src="app/user/user.js"></script>
       <script src="app/week/week.controller.js"></script>
+      <script src="app/week/week.js"></script>
       <script src="app/account/login/login.controller.js"></script>
-      <script src="app/account/settings/settings.controller.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
       <script src="components/auth/router.decorator.js"></script>
       <script src="components/auth/user.service.js"></script>
+      <script src="components/file-explorer/file-explorer-breadcrumb.js"></script>
+      <script src="components/file-explorer/file-explorer-byte.filter.js"></script>
       <script src="components/file-explorer/file-explorer-file.js"></script>
       <script src="components/file-explorer/file-explorer-folder.js"></script>
       <script src="components/file-explorer/file-explorer.js"></script>
+      <script src="app/account/settings/settings.controller.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/image/image.service.js"></script>
       <script src="components/modal/modal.service.js"></script>

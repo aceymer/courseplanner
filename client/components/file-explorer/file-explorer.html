@@ -1,23 +1,34 @@
-<md-toolbar>
-  <div class="md-toolbar-tools">
-    <h2 style="font-weight:bold" >File Explorer</h2>
-    <h6 style="margin-left:15px;margin-bottom:0px;">
-      <md-button ng-repeat="path in $ctrl.folderHiearchy">{{path.name}} <span ng-if="$ctrl.folderHiearchy && $ctrl.folderHiearchy.length > 1" class="fa fa-angle-right"></span></md-button>
-    </h6>
-    <span flex ></span>
-    <md-button aria-label="Add" class='md-icon-button fe-button' ng-click="add()"><span class="fa fa-plus"></span></md-button>
-    <md-button aria-label="Download" class='md-icon-button fe-button' ng-click="download()"><span class="fa fa-download"></span></md-button>
-    <md-button aria-label="Preview" class='md-icon-button fe-button' ng-click="preview()"><span class="fa fa-eye"></span></md-button>
-    <md-button aria-label="Delete" class='md-icon-button fe-button' ng-click="delete()"><span class="fa fa-trash-o"></span></md-button>
-  </div>
+<explorer-bread-crumb bread-crumb="$ctrl.breadCrumb" bread-crumb-back=$ctrl.goBack($value) ></explorer-bread-crumb>
 
-</md-toolbar>
-<div class="layout-column">
+<div ng-if="$ctrl.folder" class="layout-column">
 
   <div class="layout-wrap layout-row" layout="row" layout-wrap>
-    <explorer-folder on-open="$ctrl.openFolder(item)" on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.selectedFolder.folders" folder="item"></explorer-folder>
+    <explorer-folder on-open="$ctrl.openFolder(item)" on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.folder.folders" folder="item"></explorer-folder>
   </div>
   <div class="layout-wrap layout-row" layout="row" layout-wrap>
-    <explorer-file on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.selectedFolder.files" file="item" ></explorer-file>
+    <explorer-file on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.folder.files" file="item" ></explorer-file>
   </div>
+</div>
+<div ng-if="!$ctrl.folder" class="layout-column">
+  <md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex layout="column">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">
+              <i class="fa fa-folder-open" aria-hidden="true"></i>
+              No Folders found
+            </span>
+          </md-card-title-text>
+
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>
+            <i class="fa fa-plus"></i>
+            Add my first folder
+          </md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </md-content>
 </div>

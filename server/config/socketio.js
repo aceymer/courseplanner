@@ -17,8 +17,9 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/folder/folder.socket').register(socket);
   require('../api/syllabus/syllabus.socket').register(socket);
-  
+
 }
 
 export default function(socketio) {

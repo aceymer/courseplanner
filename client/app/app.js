@@ -4,6 +4,7 @@ angular.module('courseplannerApp', [
   'courseplannerApp.auth',
   'courseplannerApp.admin',
   'courseplannerApp.constants',
+  'fileExplorer',
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -16,7 +17,9 @@ angular.module('courseplannerApp', [
   'angularUtils.directives.dirPagination',
   'ngAnimate',
   'ngFileUpload',
-  'ngImgCrop'
+  'ngImgCrop',
+  'lz-string',
+  'base64'
 ])
   .config(function($urlRouterProvider, $locationProvider, $mdThemingProvider) {
     $urlRouterProvider

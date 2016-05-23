@@ -23,6 +23,7 @@
     "method-override": "^2.3.5",
     "mocha": "^2.4.5",
     "mongoose": "^4.2.0",
+    "mongoose-deep-populate": "^3.0.0",
     "mongoose-paginate": "^5.0.0",
     "morgan": "~1.6.1",
     "node-base64-image": "^0.1.2",

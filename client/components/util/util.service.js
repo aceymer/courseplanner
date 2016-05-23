@@ -5,7 +5,7 @@
 /**
  * The Util service is for thin, globally reusable, utility functions
  */
-function UtilService($window) {
+function UtilService($window, $base64, LZString) {
   var Util = {
     /**
      * Return a callback or noop function
@@ -47,6 +47,21 @@ function UtilService($window) {
           url.protocol === o.protocol;
       });
       return (origins.length >= 1);
+    },
+    encodeUrlIds(ids) {
+      if (Array.isArray(ids) && ids.length > 0) {
+        return LZString.compressToBase64(JSON.stringify(ids));
+      }
+      return ids;
+    },
+    decodeUrlIds(ids) {
+      ids = LZString.decompressFromBase64(ids);
+      try {
+        ids = JSON.parse(ids);
+      } catch (exception) {
+        ids = [];
+      }
+      return ids;
     }
   };
 

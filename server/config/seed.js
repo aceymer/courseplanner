@@ -6,6 +6,120 @@
 'use strict';
 import User from '../api/user/user.model';
 import Syllabus from '../api/syllabus/syllabus.model';
+import Folder from '../api/folder/folder.model';
+
+
+Folder.find({}).removeAsync()
+  .then(() => {
+    Folder.createAsync({
+      _id: '9977bcec37407aa60754252a',
+      name: 'Documents',
+      created: new Date(),
+      folders: ['9977bcec37407aa60754252b', '9977bcec37407aa60754252c', '9977bcec37407aa60754252d', '9977bcec37407aa60754252h'],
+      files: [{
+        name: 'cheese.docx',
+        size: 120,
+        created: new Date(),
+        url: 'not important'
+      },{
+        name: 'cheese2.pdf',
+        size: 110,
+        created: new Date(),
+        url: 'not important'
+      },{
+        name: 'cheese2.png',
+        size: 90,
+        created: new Date(),
+        url: 'not important'
+      }]
+
+    },
+    {
+      _id: '9977bcec37407aa60754252b',
+      name: 'Documents 1',
+      created: new Date(),
+      files: [{
+        name: 'cheese.docx',
+        size: 120,
+        created: new Date(),
+        url: 'not important'
+      },{
+        name: 'cheese2.pdf',
+        size: 110,
+        created: new Date(),
+        url: 'not important'
+      },{
+        name: 'cheese2.png',
+        size: 90,
+        created: new Date(),
+        url: 'not important'
+      }]
+
+    },
+    {
+      _id: '9977bcec37407aa60754252c',
+      name: 'Documents 2',
+      created: new Date(),
+      folders: ['9977bcec37407aa60754252e', '9977bcec37407aa60754252f'],
+      files: [{
+        name: 'cheese2.png',
+        size: 90,
+        created: new Date(),
+        url: 'not important'
+      }]
+
+    },
+    {
+      _id: '9977bcec37407aa60754252d',
+      name: 'Documents 3',
+      created: new Date(),
+      files: [{
+        name: 'cheese299.png',
+        size: 90,
+        created: new Date(),
+        url: 'not important'
+      }]
+
+    },
+    {
+      _id: '9977bcec37407aa60754252e',
+      name: 'Documents4',
+      created: new Date(),
+      files: [{
+        name: 'cheese22299.png',
+        size: 90,
+        created: new Date(),
+        url: 'not important'
+      }]
+
+    },
+    {
+      _id: '9977bcec37407aa60754252f',
+      name: 'Documents5',
+      created: new Date(),
+      files: [{
+        name: 'cheese33299.png',
+        size: 90,
+        created: new Date(),
+        url: 'not important'
+      }]
+
+    },
+    {
+      _id: '9977bcec37407aa60754252h',
+      name: 'Documents 6',
+      created: new Date(),
+      files: [{
+        name: 'cheese3213299.png',
+        size: 90,
+        created: new Date(),
+        url: 'not important'
+      }]
+
+    }).then(() => {
+      console.log('finished populating folders');
+    });
+});
 
 Syllabus.find({}).removeAsync()
   .then(() => {
@@ -50,7 +164,7 @@ Syllabus.find({}).removeAsync()
         console.log('finished populating syllabuses');
       });
 
-      var syllaArray = [];
+      /*var syllaArray = [];
       for (var i = 1; i < 5000; i++) {
         syllaArray.push({
           academy: 'Business Academy SouthWest',
@@ -83,7 +197,7 @@ Syllabus.find({}).removeAsync()
       Syllabus.createAsync(syllaArray)
       .then(() => {
         console.log('finished populating crazy lots of syllabuses');
-      });
+      });*/
   });
 
 User.find({}).removeAsync()
@@ -102,7 +216,8 @@ User.find({}).removeAsync()
         role: ['admin', 'user', 'superAdmin'],
         name: 'Admin',
         email: 'admin@example.com',
-        password: 'admin'
+        password: 'admin',
+        rootFolder: '9977bcec37407aa60754252a'
       })
       .then(() => {
         console.log('finished populating users');

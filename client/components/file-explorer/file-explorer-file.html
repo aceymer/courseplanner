@@ -1,11 +1,11 @@
 <md-button ng-click="$ctrl.select()" style="border:1px black solid" ng-class="$ctrl.file.selected ? 'selected' : ''" layout="column" layout-align="space-between center" role="button">
   <div layout="row" class="title layout-align-start-center layout-row file" layout-align="start left">
     <span class="file-type">
-      <i ng-class="$ctrl.getImage()" class="fa"></i>
+      <i ng-class="$ctrl.getImage($ctrl.file)" class="fa"></i>
     </span>
     <span class="info" flex="100">
-      <h6>Size: {{$ctrl.file.size}}</h6>
-      <h6>Created: {{$ctrl.file.created}}</h6>
+      <h6>Size: {{$ctrl.file.size | bytes}}</h6>
+      <h6>Created: {{$ctrl.file.created | date:'yyyy-MM-dd hh:mm'}}</h6>
     </span>
 
   </div>

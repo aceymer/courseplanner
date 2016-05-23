@@ -1,21 +1,31 @@
 'use strict';
 
-class NavbarController {
+function navbarController($base64, $state, Auth, Util) {
+  var ctrl = this;
+  ctrl.isLoggedIn = Auth.isLoggedIn;
+  ctrl.isAdmin = Auth.isAdmin;
+  ctrl.getCurrentUser = Auth.getCurrentUser;
+
+  ctrl.goToFile = function(){
+    ctrl.getCurrentUser(function(user){
+      if(user.rootFolder){
+        var ids = [];
+        ids.push(user.rootFolder._id);
+        ids = Util.encodeUrlIds(ids);
+        $state.go('file', {id:ids});
+      }
+    });
+  };
+
   //start-non-standard
-  menu = [{
+  ctrl.menu = [{
     'title': 'Home',
     'state': 'main'
   }];
 
-  isCollapsed = true;
+  ctrl.isCollapsed = true;
   //end-non-standard
-
-  constructor(Auth) {
-    this.isLoggedIn = Auth.isLoggedIn;
-    this.isAdmin = Auth.isAdmin;
-    this.getCurrentUser = Auth.getCurrentUser;
-  }
 }
 
 angular.module('courseplannerApp')
-  .controller('NavbarController', NavbarController);
+  .controller('NavbarController', navbarController);
