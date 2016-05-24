@@ -27,20 +27,24 @@
           }
         });
       }
+      if($stateParams.action){
+        ctrl.action = $stateParams.action;
+      }
     }
     ctrl.$onInit = init;
 
-    ctrl.openTheFolder = function(folder) {
+    ctrl.openTheFolder = function(folder, action) {
       var ids = Util.decodeUrlIds($stateParams.id);
       ids.push(folder._id);
       ids = Util.encodeUrlIds(ids);
       $state.transitionTo('file', {
-        id: ids
+        id: ids,
+        action: action
       });
 
     };
 
-    ctrl.breadCrumbBack = function(folder) {
+    ctrl.breadCrumbBack = function(folder, action) {
       var ids = Util.decodeUrlIds($stateParams.id);
       ids.forEach(function(stored){
         if(stored === folder._id){
@@ -49,7 +53,45 @@
       });
       ids = Util.encodeUrlIds(ids);
       $state.transitionTo('file', {
-        id: ids
+        id: ids,
+        action: action
+      });
+    };
+
+    ctrl.deleteItem = function(item) {
+      if(!item.url){
+        //Item is a folder
+        FolderService.delete({
+          id: item._id
+        }, function() {
+          ctrl.openTheFolder(ctrl.selectedFolder);
+        });
+      } else{
+        //Item is a file
+        _.remove(ctrl.selectedFolder.files, function(file) {
+          return item._id === file._id;
+        });
+        FolderService.update({
+          id: ctrl.selectedFolder._id
+        }, ctrl.selectedFolder, function() {
+          ctrl.openTheFolder(ctrl.selectedFolder);
+        });
+      }
+
+    };
+
+    ctrl.changeAction = function(action){
+      ctrl.breadCrumbBack(ctrl.selectedFolder, action);
+    };
+
+    ctrl.addFolder = function(folderName){
+      var newChildFolder = {
+        name: folderName
+      };
+      FolderService.save({
+        id: ctrl.selectedFolder._id
+      }, newChildFolder, function() {
+        ctrl.openTheFolder(ctrl.selectedFolder);
       });
     };
   }

@@ -4,7 +4,7 @@ angular.module('courseplannerApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('file', {
-        url: '/file/:id',
+        url: '/file/:id/:action',
         template: '<file></file>'
       });
   });

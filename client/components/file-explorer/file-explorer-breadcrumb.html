@@ -5,10 +5,12 @@
       <md-button aria-label="path" ng-repeat="folder in $ctrl.breadCrumb" ng-click="$ctrl.goBack(folder)">{{folder.name}} <span ng-if="$ctrl.folderHiearchy && $ctrl.folderHiearchy.length > 1" class="fa fa-angle-right"></span></md-button>
     </h6>
     <span flex ></span>
-    <md-button aria-label="Add" class='md-icon-button fe-button' ng-click="add()"><span class="fa fa-plus"></span></md-button>
-    <md-button aria-label="Download" class='md-icon-button fe-button' ng-click="download()"><span class="fa fa-download"></span></md-button>
-    <md-button aria-label="Preview" class='md-icon-button fe-button' ng-click="preview()"><span class="fa fa-eye"></span></md-button>
-    <md-button aria-label="Delete" class='md-icon-button fe-button' ng-click="delete()"><span class="fa fa-trash-o"></span></md-button>
+
+    <md-button ng-if="$ctrl.action" aria-label="Cancel" class='md-icon-button fe-button' ng-click="$ctrl.cancel()"><span class="fa fa-ban"></span></md-button>
+    <md-button ng-if="!$ctrl.action" aria-label="Add" class='md-icon-button fe-button' ng-click="$ctrl.add()"><span class="fa fa-plus"></span></md-button>
+    <md-button ng-if="$ctrl.selectedItem" aria-label="Download" class='md-icon-button fe-button' ng-click="download()"><span class="fa fa-download"></span></md-button>
+    <md-button ng-if="$ctrl.selectedItem" aria-label="Preview" class='md-icon-button fe-button' ng-click="preview()"><span class="fa fa-eye"></span></md-button>
+    <md-button ng-if="$ctrl.selectedItem" aria-label="Delete" class='md-icon-button fe-button' ng-click="$ctrl.delete()"><span class="fa fa-trash-o"></span></md-button>
   </div>
 
 </md-toolbar>

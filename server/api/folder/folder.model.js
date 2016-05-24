@@ -4,7 +4,10 @@ import mongoose from 'mongoose';
 
 var FolderSchema = new mongoose.Schema({
   name: String,
-  created: Date,
+  created: {
+    type: Date,
+    default: new Date()
+  },
   folders: [{
       type: mongoose.Schema.ObjectId,
       ref: 'Folder'
@@ -12,8 +15,12 @@ var FolderSchema = new mongoose.Schema({
   files: [{
     name: String,
     size: Number,
-    created: Date,
-    url: String
+    created: {
+      type: Date,
+      default: new Date()
+    },
+    url: String,
+    isFile: Boolean
   }]
 });
 
@@ -24,7 +31,9 @@ FolderSchema.pre('remove', function(next) {
       model.findById(folder)
       .exec()
       .then(function(found){
-        found.remove();
+        if(found){
+          found.remove();
+        }
       });
     });
     next();

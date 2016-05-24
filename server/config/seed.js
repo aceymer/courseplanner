@@ -102,7 +102,7 @@ Folder.find({}).removeAsync()
         size: 90,
         created: new Date(),
         url: 'not important'
-      }]
+      }] 
 
     },
     {

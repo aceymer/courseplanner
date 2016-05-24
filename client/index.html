@@ -17,7 +17,7 @@
       <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
       <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
       <!-- endbower -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
       <link rel="stylesheet" href="app/app.css">
@@ -29,6 +29,7 @@
       <link rel="stylesheet" href="app/user/user-details.css">
       <link rel="stylesheet" href="app/user/user.css">
       <link rel="stylesheet" href="app/week/week.css">
+      <link rel="stylesheet" href="components/file-explorer/file-explorer-add.css">
       <link rel="stylesheet" href="components/file-explorer/file-explorer-breadcrumb.css">
       <link rel="stylesheet" href="components/file-explorer/file-explorer-file.css">
       <link rel="stylesheet" href="components/file-explorer/file-explorer-folder.css">
@@ -88,11 +89,11 @@
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
-      <script src="components/auth/auth.module.js"></script>
       <script src="app/admin/admin.module.js"></script>
+      <script src="components/auth/auth.module.js"></script>
       <script src="components/file-explorer/file-explorer.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/admin/admin.controller.js"></script>
+      <script src="components/auth/auth.service.js"></script>
       <script src="app/account/account.js"></script>
       <script src="app/admin/admin.router.js"></script>
       <script src="app/app.constant.js"></script>
@@ -107,17 +108,18 @@
       <script src="app/user/user.js"></script>
       <script src="app/week/week.controller.js"></script>
       <script src="app/week/week.js"></script>
+      <script src="app/account/settings/settings.controller.js"></script>
       <script src="app/account/login/login.controller.js"></script>
-      <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
       <script src="components/auth/router.decorator.js"></script>
       <script src="components/auth/user.service.js"></script>
+      <script src="components/file-explorer/file-explorer-add.js"></script>
       <script src="components/file-explorer/file-explorer-breadcrumb.js"></script>
       <script src="components/file-explorer/file-explorer-byte.filter.js"></script>
       <script src="components/file-explorer/file-explorer-file.js"></script>
       <script src="components/file-explorer/file-explorer-folder.js"></script>
       <script src="components/file-explorer/file-explorer.js"></script>
-      <script src="app/account/settings/settings.controller.js"></script>
+      <script src="app/account/signup/signup.controller.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/image/image.service.js"></script>
       <script src="components/modal/modal.service.js"></script>
@@ -125,7 +127,7 @@
       <script src="components/navbar/navbar.controller.js"></script>
       <script src="components/navbar/navbar.directive.js"></script>
       <script src="components/socket/socket.service.js"></script>
-      <script src="app/account/signup/signup.controller.js"></script>
+      <script src="app/admin/admin.controller.js"></script>
       <script src="components/util/util.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->

@@ -8,6 +8,14 @@ function ExplorerBreadCrumbController() {
   ctrl.goBack = function(folder){
     ctrl.breadCrumbBack({$value: folder});
   };
+
+  ctrl.delete = function(){
+    ctrl.deleteItem();
+  };
+
+  ctrl.add = function(){
+    ctrl.addItem();
+  };
 }
 
 angular.module('fileExplorer').component('explorerBreadCrumb', {
@@ -15,6 +23,11 @@ angular.module('fileExplorer').component('explorerBreadCrumb', {
   controller: ExplorerBreadCrumbController,
   bindings: {
     breadCrumb:'<',
-    breadCrumbBack: '&'
+    selectedItem: '<',
+    action: '<',
+    breadCrumbBack: '&',
+    deleteItem: '&',
+    addItem: '&',
+    cancel: '&'
   }
 });

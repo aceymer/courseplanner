@@ -5,7 +5,6 @@ function ExplorerController() {
 
   ctrl.breadCrumb = [];
 
-
   ctrl.$onChanges = function(object){
     if(object.breadCrumb && object.breadCrumb.currentValue){
       if(ctrl.selectedItem){
@@ -30,6 +29,16 @@ function ExplorerController() {
     ctrl.breadCrumbBack({$value: folder});
   };
 
+  ctrl.delete = function(){
+    ctrl.deleteItem({$value: ctrl.selectedItem});
+  };
+
+  ctrl.change = function(value){
+    ctrl.changeAction({$value: value});
+  };
+  ctrl.addNewFolder = function(value){
+    ctrl.addFolder({$value: value});
+  };
 }
 
 angular.module('fileExplorer').component('fileExplorer', {
@@ -38,8 +47,13 @@ angular.module('fileExplorer').component('fileExplorer', {
   bindings: {
     folder:'<',
     breadCrumb:'<',
+    selectedItem: '<',
+    action: '<',
     open: '&',
-    breadCrumbBack: '&'
+    breadCrumbBack: '&',
+    deleteItem: '&',
+    changeAction: '&',
+    addFolder:'&'
   }
 
 });

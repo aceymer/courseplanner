@@ -17,6 +17,7 @@ function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
     if (entity) {
+
       res.status(statusCode).json(entity);
     }
   };
@@ -24,7 +25,8 @@ function respondWithResult(res, statusCode) {
 
 function saveUpdates(updates) {
   return function(entity) {
-    var updated = _.merge(entity, updates);
+    var updated = _.assign(entity, updates);
+    console.log('updated:', updated);
     return updated.save()
       .then(updated => {
         return updated;
@@ -56,6 +58,7 @@ function handleEntityNotFound(res) {
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
+    console.log(err);
     res.status(statusCode).send(err);
   };
 }
@@ -86,17 +89,44 @@ export function path(req, res) {
   return Folder.find({'_id': { $in: path}})
     .populate('folders')
     .exec()
+    .then(function(entity){
+      return entity.sort((a, b) => path.findIndex(id => a._id.equals(id)) -
+                    path.findIndex(id => b._id.equals(id)));
+    })
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
+var findFolderName = function(folders, startName, name, index){
+  index++;
+  var result = _.filter(folders, function(item) {
+     return item.name.toLowerCase() === name.toLowerCase();
+   });
+  if(result.length > 0){
+    return findFolderName(folders, startName, startName + '('+index +')', index)
+  }
+  return name;
+}
+
 // Creates a new Folder in the DB
 export function create(req, res) {
-  return Folder.create(req.body)
-    .then(respondWithResult(res, 201))
-    .catch(handleError(res));
+  return Folder.findById(req.params.parentId)
+  .populate('folders')
+  .exec()
+  .then(function(parent){
+    var childName = findFolderName(parent.folders, req.body.name, req.body.name, 0);
+    req.body.name = childName;
+    return Folder.create(req.body)
+    .then(function(child){
+      parent.folders.push(child._id);
+      parent.save()
+      .then(respondWithResult(res, 201))
+      .catch(handleError(res));
+    })
+  })
 }
+
 
 // Updates an existing Folder in the DB
 export function update(req, res) {
