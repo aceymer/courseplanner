@@ -117,8 +117,6 @@
       );
     };
 
-    //Flunky mac sleep
-
   }
 
   angular.module('courseplannerApp')
