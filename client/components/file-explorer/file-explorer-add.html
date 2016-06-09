@@ -1,44 +1,29 @@
-<md-card>
+<md-card flex-offset="25" flex="50">
+
   <md-card-title>
     <md-card-title-text>
       <span class="md-headline">
-        <i class="fa fa-folder-open" aria-hidden="true"></i>
-        Add New Folder
-      </span>
+          <i class="fa fa-folder-open" aria-hidden="true"></i>
+          Add New Folder
+        </span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
-    <md-input-container class="md-block" flex-gt-sm>
-      <label>Folder Name</label>
-      <input ng-model="$ctrl.folderName"/>
-    </md-input-container>
-    <p class="help-block"> {{ message }} </p>
+    <form name="add" autocomplete="off" ng-submit="$ctrl.add()">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Folder Name</label>
+        <input name="name" required ng-model="$ctrl.folderName" autofocus/>
+      </md-input-container>
+      <div style="color:red;" ng-messages="add.name.$error" role="alert">
+        <div ng-message-exp="['required']">
+          Please type a name for your new folder
+        </div>
+      </div>
+    </form>
   </md-card-content>
   <md-card-actions layout="row" layout-align="end center">
     <div layout="row" layout-align="end center">
       <md-button ng-click="$ctrl.add()" aria-label="Add" class='md-raised md-primary'><span class="fa fa-plus"></span> Add Folder</md-button>
     </div>
   </md-card-actions>
-</md-card>
-<md-card>
-  <md-card-title>
-    <md-card-title-text>
-      <span class="md-headline">
-        <i class="fa fa-file" aria-hidden="true"></i>
-        Add files
-      </span>
-    </md-card-title-text>
-  </md-card-title>
-  <md-card-content>
-    <div class="add-drop-box add-drop-box-container"
-         ngf-drag-over-class="drop-box-dragover"
-         ngf-change="readFileImg($files)"
-         ngf-drop ngf-select
-         ng-model="files"
-         ngf-multiple="false"
-         ngf-allow-dir="false"
-         accept="image/*" ng-cloak>
-      <span>Drop new files here or click me to add new files</span>
-    </div>
-  </md-card-content>
 </md-card>

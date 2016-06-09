@@ -19,8 +19,7 @@ var FolderSchema = new mongoose.Schema({
       type: Date,
       default: new Date()
     },
-    url: String,
-    isFile: Boolean
+    path: String
   }]
 });
 

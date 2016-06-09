@@ -1,7 +1,7 @@
 'use strict';
 (function() {
 
-  function FileComponent($state, $stateParams, Util, Auth, FolderService) {
+  function FileComponent($state, $stateParams, $mdToast, Util, Auth, FolderService, Upload) {
     var ctrl = this;
 
     function init() {
@@ -10,14 +10,14 @@
         FolderService.path({
           id: $stateParams.id
         }, function(folders) {
-          if(folders && folders.length > 0){
-            ctrl.selectedFolder = folders[folders.length-1];
+          if (folders && folders.length > 0) {
+            ctrl.selectedFolder = folders[folders.length - 1];
             ctrl.breadCrumb = folders;
           }
         });
-      } else{
-        Auth.getCurrentUser(function(user){
-          if(user.rootFolder){
+      } else {
+        Auth.getCurrentUser(function(user) {
+          if (user.rootFolder) {
             var ids = [];
             ids.push(user.rootFolder._id);
             ids = Util.encodeUrlIds(ids);
@@ -27,7 +27,7 @@
           }
         });
       }
-      if($stateParams.action){
+      if ($stateParams.action) {
         ctrl.action = $stateParams.action;
       }
     }
@@ -46,9 +46,9 @@
 
     ctrl.breadCrumbBack = function(folder, action) {
       var ids = Util.decodeUrlIds($stateParams.id);
-      ids.forEach(function(stored){
-        if(stored === folder._id){
-          ids.length= ids.indexOf(stored) + 1;
+      ids.forEach(function(stored) {
+        if (stored === folder._id) {
+          ids.length = ids.indexOf(stored) + 1;
         }
       });
       ids = Util.encodeUrlIds(ids);
@@ -59,14 +59,14 @@
     };
 
     ctrl.deleteItem = function(item) {
-      if(!item.url){
+      if (!item.url) {
         //Item is a folder
         FolderService.delete({
           id: item._id
         }, function() {
           ctrl.openTheFolder(ctrl.selectedFolder);
         });
-      } else{
+      } else {
         //Item is a file
         _.remove(ctrl.selectedFolder.files, function(file) {
           return item._id === file._id;
@@ -80,11 +80,11 @@
 
     };
 
-    ctrl.changeAction = function(action){
+    ctrl.changeAction = function(action) {
       ctrl.breadCrumbBack(ctrl.selectedFolder, action);
     };
 
-    ctrl.addFolder = function(folderName){
+    ctrl.addFolder = function(folderName) {
       var newChildFolder = {
         name: folderName
       };
@@ -94,6 +94,29 @@
         ctrl.openTheFolder(ctrl.selectedFolder);
       });
     };
+
+    ctrl.upload = function(file) {
+      Upload.upload({
+          url: '/api/folders/upload/'+ ctrl.selectedFolder._id,
+          data: {
+            file: file
+          }
+        },
+        function() {
+          var toast = $mdToast.simple()
+            .textContent('File upload')
+            .action('OK')
+            .highlightAction(true)
+            .position('left');
+          $mdToast.show(toast);
+          ctrl.openTheFolder(ctrl.selectedFolder);
+        },
+        function(err) {
+          console.log('Error status: ' + err);
+        }
+      );
+    };
+
   }
 
   angular.module('courseplannerApp')

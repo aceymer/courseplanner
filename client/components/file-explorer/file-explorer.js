@@ -1,6 +1,6 @@
 'use strict';
 
-function ExplorerController() {
+function ExplorerController($mdToast, FileService) {
   var ctrl = this;
 
   ctrl.breadCrumb = [];
@@ -39,6 +39,27 @@ function ExplorerController() {
   ctrl.addNewFolder = function(value){
     ctrl.addFolder({$value: value});
   };
+
+  ctrl.readFiles = function(files) {
+    if (files && files.length) {
+      files.forEach(function(file){
+        FileService.readFile(file, function(err, data) {
+          if (err) {
+            var toast = $mdToast.simple()
+              .textContent(err)
+              .action('Error')
+              .highlightAction(false)
+              .position('top')
+              .theme('error-toast');
+            return $mdToast.show(toast);
+          }
+          file.data = data;
+          ctrl.uploadFile({$value: file});
+        });
+      });
+
+    }
+  };
 }
 
 angular.module('fileExplorer').component('fileExplorer', {
@@ -53,7 +74,8 @@ angular.module('fileExplorer').component('fileExplorer', {
     breadCrumbBack: '&',
     deleteItem: '&',
     changeAction: '&',
-    addFolder:'&'
+    addFolder:'&',
+    uploadFile:'&'
   }
 
 });

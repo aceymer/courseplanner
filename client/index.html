@@ -45,8 +45,11 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <md-content ui-view=""></md-content>
-
+    <navbar></navbar>
+    <md-content ui-view="" layout="column" flex></md-content>
+    <footer>
+      <span>© 2016 InnoTech Solution - EASV - All rights reserved.</span>
+    </footer>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -120,6 +123,7 @@
       <script src="components/file-explorer/file-explorer-folder.js"></script>
       <script src="components/file-explorer/file-explorer.js"></script>
       <script src="app/account/signup/signup.controller.js"></script>
+      <script src="components/file-explorer/file.service.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/image/image.service.js"></script>
       <script src="components/modal/modal.service.js"></script>

@@ -1,35 +1,43 @@
-<explorer-bread-crumb action="$ctrl.action" cancel="$ctrl.change('')" add-item="$ctrl.change('add')" delete-item="$ctrl.delete()" selected-item="$ctrl.selectedItem" bread-crumb="$ctrl.breadCrumb" bread-crumb-back=$ctrl.goBack($value) ></explorer-bread-crumb>
-<div ng-if="!$ctrl.action">
-  <div ng-if="$ctrl.folder" class="layout-column">
-    <div class="layout-wrap layout-row" layout="row" layout-wrap>
-      <explorer-folder on-open="$ctrl.openFolder(item)" on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.folder.folders" folder="item"></explorer-folder>
-    </div>
-    <div class="layout-wrap layout-row" layout="row" layout-wrap>
-      <explorer-file on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.folder.files" file="item" ></explorer-file>
-    </div>
-  </div>
-  <div ng-if="!$ctrl.folder" class="layout-column">
-    <md-content class="md-padding" layout-xs="column" layout="row">
-      <div flex layout="column">
-        <md-card>
-          <md-card-title>
-            <md-card-title-text>
-              <span class="md-headline">
+<explorer-bread-crumb action="$ctrl.action" cancel="$ctrl.change('')" add-item="$ctrl.change('add')" delete-item="$ctrl.delete()" selected-item="$ctrl.selectedItem" bread-crumb="$ctrl.breadCrumb" bread-crumb-back=$ctrl.goBack($value)></explorer-bread-crumb>
+<md-card layout-fill>
+  <md-card-content >
+    <div ng-if="!$ctrl.action"
+    ngf-drop ngf-drag-over-class="drop-box-dragover"
+    ngf-change="$ctrl.readFiles($files)"
+    ng-model="$ctrl.files"
+    ngf-multiple="true"
+    flex style="border:white 2px solid">
+      <div ng-if="$ctrl.folder" class="layout-column">
+        <div class="layout-wrap layout-row" layout="row" layout-wrap>
+          <explorer-folder on-open="$ctrl.openFolder(item)" on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.folder.folders | orderBy:'name'" folder="item"></explorer-folder>
+        </div>
+        <div class="layout-wrap layout-row" layout="row" layout-wrap>
+          <explorer-file on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.folder.files | orderBy:'name'" file="item"></explorer-file>
+        </div>
+      </div>
+      <div ng-if="!$ctrl.folder" class="layout-column">
+        <md-content class="md-padding" layout-xs="column" layout="row">
+          <div flex layout="column">
+            <md-card>
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">
                 <i class="fa fa-folder-open" aria-hidden="true"></i>
                 No Folders found
               </span>
-            </md-card-title-text>
-
-          </md-card-title>
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button>
-              <i class="fa fa-plus"></i>
-              Add my first folder
-            </md-button>
-          </md-card-actions>
-        </md-card>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button>
+                  <i class="fa fa-plus"></i> Add my first folder
+                </md-button>
+              </md-card-actions>
+            </md-card>
+          </div>
+        </md-content>
       </div>
-    </md-content>
-  </div>
-</div>
-<file-explorer-add add-folder="$ctrl.addNewFolder($value)" ng-if="$ctrl.action === 'add'"></file-explorer-add>
+    </div>
+    <file-explorer-add layout-align="center center" add-folder="$ctrl.addNewFolder($value)" ng-if="$ctrl.action === 'add'"></file-explorer-add>
+  </md-card-content>
+
+</md-card>

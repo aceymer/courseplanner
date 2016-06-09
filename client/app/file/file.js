@@ -5,6 +5,6 @@ angular.module('courseplannerApp')
     $stateProvider
       .state('file', {
         url: '/file/:id/:action',
-        template: '<file></file>'
+        template: '<file layout-fill></file>'
       });
   });

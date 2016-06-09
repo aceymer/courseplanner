@@ -9,3 +9,18 @@
 .md-button.selected{
   background: lightgrey;
 }
+
+
+.drop-box {
+    background: #F8F8F8;
+    border: 2px dashed red;
+    width: 200px;
+    text-align: center;
+    padding: 25px;
+    margin: 10px;
+
+}
+.dragover {
+    border: 2px dashed lightblue !important ;
+
+}

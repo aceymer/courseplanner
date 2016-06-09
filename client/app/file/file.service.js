@@ -14,6 +14,18 @@ angular.module('courseplannerApp')
             controller:'path'
           },
           isArray:true
+        },
+        upload: {
+          method:'POST',
+          params: {
+            controller:'upload'
+          }
+        },
+        deleteFile: {
+          method:'DELETE',
+          params: {
+            controller:'file'
+          }
         }
       });
 });

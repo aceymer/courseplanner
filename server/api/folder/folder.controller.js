@@ -12,12 +12,15 @@
 import _ from 'lodash';
 import lz from 'lz-string';
 import Folder from './folder.model';
+import fileHelper from '../../components/helper/fileHelper';
+
+import multer from 'multer';
+var uploader = multer({ dest: 'uploads/' }).single('file');
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
     if (entity) {
-
       res.status(statusCode).json(entity);
     }
   };
@@ -109,6 +112,17 @@ var findFolderName = function(folders, startName, name, index){
   return name;
 }
 
+var findFileName = function(files, startName, name, index){
+  index++;
+  var result = _.filter(files, function(item) {
+     return item.name.toLowerCase() === name.toLowerCase();
+   });
+  if(result.length > 0){
+    return findFolderName(files, startName, startName + '('+index +')', index)
+  }
+  return name;
+}
+
 // Creates a new Folder in the DB
 export function create(req, res) {
   return Folder.findById(req.params.parentId)
@@ -125,6 +139,31 @@ export function create(req, res) {
       .catch(handleError(res));
     })
   })
+}
+
+// Creates a new Folder in the DB
+export function upload(req, res) {
+  return uploader(req, res, function (err) {
+    if (err) {
+      console.log(err);
+      return
+    }
+    return Folder.findById(req.params.parentId)
+    .populate('folders')
+    .exec()
+    .then(function(parent){
+      var childName = findFileName(parent.files, req.file.originalname, req.file.originalname, 0);
+      var afile = {};
+      afile.name = childName;
+      afile.size = req.file.size;
+      afile.path = req.file.path;
+      parent.files.push(afile);
+      return parent.save()
+      .then(respondWithResult(res, 201))
+      .catch(handleError(res));
+
+    })
+  });
 }
 
 
@@ -145,5 +184,22 @@ export function destroy(req, res) {
   return Folder.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
+    .catch(handleError(res));
+}
+
+export function destroyFile(req, res) {
+  return Folder.findById(req.params.folderId).exec()
+    .then(handleEntityNotFound(res))
+    .then(function(entity) {
+      if (entity) {
+        _.remove(entity.files, function(file) {
+          return file._id === req.params.folderId;
+        });
+        return entity.save()
+          .then(() => {
+            res.status(204).end();
+          });
+      }
+    })
     .catch(handleError(res));
 }

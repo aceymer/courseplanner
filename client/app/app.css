@@ -27,6 +27,15 @@
   font-style: normal;
 }
 
+
+footer {
+  margin: 20px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #767676;
+  border-top: 1px solid #eee;
+}
+
 /**
  * App-wide Styles
  */
