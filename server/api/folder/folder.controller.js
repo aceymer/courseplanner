@@ -13,7 +13,7 @@ import _ from 'lodash';
 import lz from 'lz-string';
 import Folder from './folder.model';
 import fileHelper from '../../components/helper/fileHelper';
-
+import pathUtil from 'path';
 import multer from 'multer';
 var uploader = multer({ dest: 'uploads/' }).single('file');
 
@@ -118,7 +118,9 @@ var findFileName = function(files, startName, name, index){
      return item.name.toLowerCase() === name.toLowerCase();
    });
   if(result.length > 0){
-    return findFolderName(files, startName, startName + '('+index +')', index)
+    var ext =  pathUtil.extname(startName);
+    var newName = pathUtil.basename(startName, ext) + '('+index +')' + ext;
+    return findFileName(files, startName, newName, index);
   }
   return name;
 }

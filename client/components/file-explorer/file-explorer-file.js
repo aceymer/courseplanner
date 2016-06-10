@@ -2,6 +2,7 @@
 
 function ExplorerFileController() {
   var ctrl = this;
+  ctrl.file.determinateValue = 0;
 
   ctrl.getImage = function(file){
     if(file){

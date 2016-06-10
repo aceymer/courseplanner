@@ -12,7 +12,7 @@
           <explorer-folder on-open="$ctrl.openFolder(item)" on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.folder.folders | orderBy:'name'" folder="item"></explorer-folder>
         </div>
         <div class="layout-wrap layout-row" layout="row" layout-wrap>
-          <explorer-file on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.folder.files | orderBy:'name'" file="item"></explorer-file>
+          <explorer-file on-select="$ctrl.select(item)" ng-repeat="item in $ctrl.folder.files | orderBy:'-created'" file="item"></explorer-file>
         </div>
       </div>
       <div ng-if="!$ctrl.folder" class="layout-column">

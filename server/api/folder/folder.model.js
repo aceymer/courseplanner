@@ -6,7 +6,7 @@ var FolderSchema = new mongoose.Schema({
   name: String,
   created: {
     type: Date,
-    default: new Date()
+    default: Date.now
   },
   folders: [{
       type: mongoose.Schema.ObjectId,
@@ -17,7 +17,7 @@ var FolderSchema = new mongoose.Schema({
     size: Number,
     created: {
       type: Date,
-      default: new Date()
+      default: Date.now
     },
     path: String
   }]

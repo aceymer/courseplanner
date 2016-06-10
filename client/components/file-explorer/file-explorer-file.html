@@ -5,11 +5,12 @@
     </span>
     <span class="info" flex="100">
       <h6>Size: {{$ctrl.file.size | bytes}}</h6>
-      <h6>Created: {{$ctrl.file.created | date:'yyyy-MM-dd hh:mm'}}</h6>
+      <h6>Created: {{$ctrl.file.created | date:'dd-MM-yyyy HH:mm'}}</h6>
     </span>
 
   </div>
   <div class="file-name ng-binding" flex="100">
     {{$ctrl.file.name}}
   </div>
+   <md-progress-linear ng-if="$ctrl.file.uploading" md-mode="determinate" value="{{$ctrl.file.determinateValue}}"></md-progress-linear>
 </md-button>

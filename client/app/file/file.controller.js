@@ -96,13 +96,15 @@
     };
 
     ctrl.upload = function(file) {
+      file.uploading = true;
+      file.created = Date.now;
+      ctrl.selectedFolder.files.push(file);
       Upload.upload({
           url: '/api/folders/upload/'+ ctrl.selectedFolder._id,
           data: {
             file: file
           }
-        },
-        function() {
+        }).then(function () {
           var toast = $mdToast.simple()
             .textContent('File upload')
             .action('OK')
@@ -110,11 +112,11 @@
             .position('left');
           $mdToast.show(toast);
           ctrl.openTheFolder(ctrl.selectedFolder);
-        },
-        function(err) {
-          console.log('Error status: ' + err);
-        }
-      );
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+        }, function (evt) {
+            file.determinateValue = parseInt(100.0 * evt.loaded / evt.total);
+        });
     };
 
   }

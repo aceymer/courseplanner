@@ -4,7 +4,6 @@ angular.module('courseplannerApp')
   .factory('FileService', function Formulator() {
     var Formulator = {
       readFile: function(file, cb){
-        console.log('huh');
         if(window.FileReader){
           if(file.size > 500000000){
             return cb('Error, file exceeds max size limit.');
